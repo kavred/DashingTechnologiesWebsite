@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { 
   Cpu, Zap, Layers, Server, RefreshCw, UploadCloud, Play, 
   Check, ArrowRight, ShieldCheck, Activity, Thermometer, 
-  Sliders, FileText, CheckCircle2, ChevronRight, Download, Eye
+  Sliders, FileText, CheckCircle2, ChevronRight, Eye, Terminal, Clock
 } from 'lucide-react';
+import ROICalculator from '../components/ROICalculator';
+import HardwareHotspots from '../components/HardwareHotspots';
 import './LandingPage.css';
 
 export default function LandingPage({ onOpenLOI }) {
@@ -14,7 +15,10 @@ export default function LandingPage({ onOpenLOI }) {
   const [bedTemp, setBedTemp] = useState(60.1);
   const [secondsRemaining, setSecondsRemaining] = useState(135);
 
-  // Interactive CAD demo state
+  // Tabbed feature showcase state
+  const [activeFeatureTab, setActiveFeatureTab] = useState('cloud-dispatch');
+
+  // CAD Demo state
   const [selectedCad, setSelectedCad] = useState({
     id: 1,
     name: 'housing_v4_mount.step',
@@ -30,23 +34,19 @@ export default function LandingPage({ onOpenLOI }) {
     { id: 'JOB-906', name: 'sensor_bracket_v2.step', printer: 'Node #01', status: 'Queued', progress: 0 },
   ]);
 
-  // Quick form state
+  // Lead form state
   const [leadName, setLeadName] = useState('');
   const [leadEmail, setLeadEmail] = useState('');
   const [leadSubmitted, setLeadSubmitted] = useState(false);
 
-  // Live telemetry timer effect
+  // Telemetry loop effect
   useEffect(() => {
     const interval = setInterval(() => {
-      setPrintProgress((prev) => {
-        if (prev >= 99) return 12; // Cycle loop
-        return prev + 1;
-      });
+      setPrintProgress((prev) => (prev >= 99 ? 12 : prev + 1));
       setHotendTemp((prev) => +(214 + Math.random() * 1.5).toFixed(1));
       setBedTemp((prev) => +(59.8 + Math.random() * 0.5).toFixed(1));
       setSecondsRemaining((prev) => (prev > 10 ? prev - 2 : 120));
     }, 2000);
-
     return () => clearInterval(interval);
   }, []);
 
@@ -82,13 +82,13 @@ export default function LandingPage({ onOpenLOI }) {
 
   return (
     <div className="landing-page">
-      {/* 1. HERO SECTION (Above the Fold) */}
-      <section className="hero-section">
+      {/* 1. HERO SECTION (Asymmetrical 60/40 Layout) */}
+      <section className="hero-section bg-grid-pattern">
         <div className="container">
           <div className="hero-grid">
-            <div>
-              <div className="badge badge-cyan hero-badge">
-                <Cpu size={14} /> Modular Robotic Harvesting & Enterprise Cloud
+            <div className="hero-content">
+              <div className="tech-meta-tag">
+                <span className="meta-dot"></span> CONTINUOUS 3D HARVESTING ARCHITECTURE
               </div>
               
               <h1 className="hero-title">
@@ -97,69 +97,66 @@ export default function LandingPage({ onOpenLOI }) {
               </h1>
               
               <p className="hero-subtitle">
-                Automate your print farm with modular robotic harvesting and enterprise cloud control—from 2-printer desktop racks to enterprise server arrays.
+                Eliminate manual bed scraping. Dashing combines modular robotic sheet harvesters with enterprise cloud control—unlocking 24/7 continuous output for desktop racks and server arrays.
               </p>
 
               <div className="hero-cta-group">
                 <button className="btn btn-primary btn-lg" onClick={onOpenLOI}>
-                  <span>Pre-Order / Get Early Access</span>
-                  <ArrowRight size={20} />
+                  <span>Reserve Early Access Unit</span>
+                  <ArrowRight size={18} />
                 </button>
-                <a href="#software-demo" className="btn btn-secondary btn-lg">
-                  <Play size={18} fill="currentColor" />
-                  <span>Explore Dashboard</span>
+                <a href="#interactive-simulator" className="btn btn-secondary btn-lg">
+                  <Sliders size={18} />
+                  <span>Simulate Farm Yield</span>
                 </a>
               </div>
 
-              <div className="hero-trust-bar">
-                <div className="trust-item">
-                  <ShieldCheck size={18} color="var(--accent)" />
-                  <span>Zero Bed Swapping Labor</span>
+              <div className="hero-stats-ribbon">
+                <div className="ribbon-item">
+                  <div className="ribbon-num">+240%</div>
+                  <div className="ribbon-label">Weekly Print Capacity</div>
                 </div>
-                <div className="trust-item">
-                  <Activity size={18} color="var(--accent)" />
-                  <span>Open Klipper API Bridge</span>
+                <div className="ribbon-divider"></div>
+                <div className="ribbon-item">
+                  <div className="ribbon-num">14.8s</div>
+                  <div className="ribbon-label">Harvest Cycle Speed</div>
                 </div>
-                <div className="trust-item">
-                  <RefreshCw size={18} color="var(--accent)" />
-                  <span>24/7 Continuous Queue</span>
+                <div className="ribbon-divider"></div>
+                <div className="ribbon-item">
+                  <div className="ribbon-num">0 Hrs</div>
+                  <div className="ribbon-label">Overnight Labor Needed</div>
                 </div>
               </div>
             </div>
 
-            {/* Visual Alternative: Live Interactive Mock UI Component displaying Fleet Telemetry */}
-            <div className="hero-mock-ui">
-              <div className="mock-ui-header">
-                <div className="mock-ui-dots">
-                  <span className="mock-dot" style={{ backgroundColor: '#EF4444' }}></span>
-                  <span className="mock-dot" style={{ backgroundColor: '#F59E0B' }}></span>
-                  <span className="mock-dot" style={{ backgroundColor: '#10B981' }}></span>
-                </div>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: '#94A3B8', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+            {/* Live Interactive Node Telemetry Box */}
+            <div className="hero-node-monitor">
+              <div className="monitor-topbar">
+                <div className="node-id-label">
                   <Cpu size={14} color="#38BDF8" /> DASHING-HUB-NODE-01
                 </div>
-                <div className="badge badge-success" style={{ fontSize: '0.7rem', padding: '0.2rem 0.6rem' }}>
-                  <span className="badge-dot pulse"></span> Automated Swapping Active
+                <div className="node-status-badge">
+                  <span className="pulse-green-dot"></span> Automated Eject Active
                 </div>
               </div>
 
-              <div className="mock-ui-body">
+              <div className="monitor-body">
                 <div className="telemetry-card">
                   <div className="telemetry-row">
                     <div>
-                      <div style={{ fontSize: '0.75rem', color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Active Job</div>
-                      <div style={{ fontWeight: 700, fontSize: '1.05rem' }}>housing_v4_mount.step</div>
+                      <div className="telemetry-subhead">Active Payload</div>
+                      <div className="telemetry-filename">{selectedCad.name}</div>
                     </div>
                     <div style={{ textAlign: 'right' }}>
-                      <div style={{ fontSize: '0.75rem', color: '#94A3B8' }}>Est. Auto-Eject</div>
-                      <div className="telemetry-font" style={{ color: '#38BDF8', fontWeight: 700 }}>
+                      <div className="telemetry-subhead">Est. Auto-Eject</div>
+                      <div className="telemetry-font time-readout">
                         {Math.floor(secondsRemaining / 60)}m {secondsRemaining % 60}s
                       </div>
                     </div>
                   </div>
 
                   <div className="progress-ring-container">
-                    <div style={{ position: 'relative', width: 64, height: 64, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <div className="svg-ring-box">
                       <svg width="64" height="64" viewBox="0 0 64 64">
                         <circle cx="32" cy="32" r="26" stroke="rgba(255,255,255,0.1)" strokeWidth="6" fill="none" />
                         <circle 
@@ -173,20 +170,20 @@ export default function LandingPage({ onOpenLOI }) {
                           style={{ transition: 'stroke-dashoffset 0.5s ease' }}
                         />
                       </svg>
-                      <span className="telemetry-font" style={{ position: 'absolute', fontWeight: 800, fontSize: '0.85rem' }}>
+                      <span className="telemetry-font ring-percent-text">
                         {printProgress}%
                       </span>
                     </div>
 
                     <div style={{ flex: 1 }}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem', marginBottom: '0.25rem' }}>
+                      <div className="progress-text-row">
                         <span>Layer 184 / 220</span>
                         <span style={{ color: '#10B981' }}>Layer Time: 18.2s</span>
                       </div>
-                      <div style={{ height: 6, backgroundColor: 'rgba(255,255,255,0.1)', borderRadius: 3, overflow: 'hidden' }}>
-                        <div style={{ width: `${printProgress}%`, height: '100%', backgroundColor: '#0284C7', transition: 'width 0.5s ease' }}></div>
+                      <div className="progress-bar-track">
+                        <div className="progress-bar-fill" style={{ width: `${printProgress}%` }}></div>
                       </div>
-                      <div style={{ fontSize: '0.75rem', color: '#94A3B8', marginTop: '0.4rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                      <div className="arm-status-row">
                         <RefreshCw size={12} className="pulse" color="#38BDF8" /> Robotic Sheet Ejector Armed & Calibrated
                       </div>
                     </div>
@@ -194,27 +191,27 @@ export default function LandingPage({ onOpenLOI }) {
 
                   <div className="temp-gauge-grid">
                     <div className="temp-gauge-box">
-                      <div style={{ fontSize: '0.7rem', color: '#94A3B8', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+                      <div className="gauge-label">
                         <Thermometer size={12} color="#EF4444" /> HOTEND TEMP
                       </div>
-                      <div style={{ fontSize: '1.1rem', fontWeight: 700, color: '#FFFFFF', marginTop: '0.2rem' }}>
-                        {hotendTemp} °C <span style={{ fontSize: '0.75rem', color: '#64748B' }}>/ 215°C</span>
+                      <div className="gauge-val">
+                        {hotendTemp} °C <span className="gauge-target">/ 215°C</span>
                       </div>
                     </div>
                     <div className="temp-gauge-box">
-                      <div style={{ fontSize: '0.7rem', color: '#94A3B8', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+                      <div className="gauge-label">
                         <Thermometer size={12} color="#F59E0B" /> HEATED BED
                       </div>
-                      <div style={{ fontSize: '1.1rem', fontWeight: 700, color: '#FFFFFF', marginTop: '0.2rem' }}>
-                        {bedTemp} °C <span style={{ fontSize: '0.75rem', color: '#64748B' }}>/ 60°C</span>
+                      <div className="gauge-val">
+                        {bedTemp} °C <span className="gauge-target">/ 60°C</span>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.8rem', color: '#94A3B8' }}>
+                <div className="monitor-footer">
                   <span>Next in Queue: <strong>impeller_blade.stl</strong></span>
-                  <span style={{ color: '#38BDF8', cursor: 'pointer' }} onClick={() => alert('Robotic eject mechanism status: Nominal')}>
+                  <span className="test-eject-btn" onClick={() => alert('Robotic eject mechanism status: Nominal')}>
                     Test Eject Arm &rarr;
                   </span>
                 </div>
@@ -224,318 +221,281 @@ export default function LandingPage({ onOpenLOI }) {
         </div>
       </section>
 
-      {/* 2. THE PROBLEM & VALUE PROPOSITION (3-Column Grid) */}
+      {/* 2. THE PROBLEM & ASYMMETRICAL SOLUTION BLOCK */}
       <section className="section section-alt">
         <div className="container">
-          <div className="section-header">
-            <span className="badge badge-cyan">Why Autonomous Farming</span>
-            <h2>Eliminate the Bottleneck of Manual Labor</h2>
-            <p>Traditional 3D printer farms lose over 40% of potential yield waiting for human operators to pull parts and reset build plates.</p>
-          </div>
-
-          <div className="grid-3">
-            {/* Card 1 */}
-            <div className="value-card">
-              <div className="value-card-icon">
-                <Zap size={28} />
-              </div>
-              <h3 style={{ marginBottom: '0.85rem' }}>24/7 Unattended Output</h3>
+          <div className="editorial-split-block">
+            <div className="editorial-left">
+              <span className="tech-meta-tag">THE FARM BOTTLENECK</span>
+              <h2>Why 40% of Print Capacity is Wasted Waiting for Humans</h2>
               <p>
-                Stop letting printers sit idle for 8 hours overnight or waking up at 3 AM to clear build plates. Our robotic mechanical ejector harvest completed parts automatically.
+                Traditional 3D printer farms lose hours every night and weekend. Completed parts sit on build plates waiting for technicians to manually scrape them off and reset the bed.
               </p>
-              <div style={{ marginTop: 'auto', paddingTop: '1.5rem', fontWeight: 700, color: 'var(--accent)', fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
-                <span>+240% Weekly Production Capacity</span>
-              </div>
-            </div>
-
-            {/* Card 2 */}
-            <div className="value-card">
-              <div className="value-card-icon">
-                <UploadCloud size={28} />
-              </div>
-              <h3 style={{ marginBottom: '0.85rem' }}>Hardware-Enabled SaaS</h3>
-              <p>
-                Upload CAD files directly to the web dashboard. Our cloud engine automatically slices, routes, and dispatches jobs to empty nodes with zero human intervention.
-              </p>
-              <div style={{ marginTop: 'auto', paddingTop: '1.5rem', fontWeight: 700, color: 'var(--accent)', fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
-                <span>Drag-and-Drop Automated Routing</span>
-              </div>
-            </div>
-
-            {/* Card 3 */}
-            <div className="value-card">
-              <div className="value-card-icon">
-                <Server size={28} />
-              </div>
-              <h3 style={{ marginBottom: '0.85rem' }}>Infinite Modular Scaling</h3>
-              <p>
-                Start small with a 1–2 printer desktop node or scale seamlessly into dense, server-rack deployments as your prototyping demand or production business expands.
-              </p>
-              <div style={{ marginTop: 'auto', paddingTop: '1.5rem', fontWeight: 700, color: 'var(--accent)', fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
-                <span>Standard 19-inch Server-Rack Mounts</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. HOW IT WORKS (The "Zero-Touch" Process Pipeline) */}
-      <section className="section">
-        <div className="container">
-          <div className="section-header">
-            <span className="badge badge-cyan">Autonomous Workflow</span>
-            <h2>The "Zero-Touch" Process Pipeline</h2>
-            <p>From digital file to harvested physical part without touching a single tool or bed scraper.</p>
-          </div>
-
-          <div className="pipeline-flow">
-            {/* Step 1 */}
-            <div className="pipeline-card">
-              <span className="pipeline-step-num">STEP 01</span>
-              <div className="pipeline-icon">
-                <UploadCloud size={24} />
-              </div>
-              <h4 style={{ marginBottom: '0.5rem' }}>Drag & Drop CAD</h4>
-              <p style={{ fontSize: '0.875rem' }}>
-                Drag STEP or STL files directly into the Dashing web platform from your browser.
-              </p>
-            </div>
-
-            {/* Step 2 */}
-            <div className="pipeline-card">
-              <span className="pipeline-step-num">STEP 02</span>
-              <div className="pipeline-icon">
-                <Cpu size={24} />
-              </div>
-              <h4 style={{ marginBottom: '0.5rem' }}>Auto-Slicing & Routing</h4>
-              <p style={{ fontSize: '0.875rem' }}>
-                The backend cloud engine prepares file gcode and dispatches it to an idle node.
-              </p>
-            </div>
-
-            {/* Step 3 */}
-            <div className="pipeline-card">
-              <span className="pipeline-step-num">STEP 03</span>
-              <div className="pipeline-icon">
-                <RefreshCw size={24} />
-              </div>
-              <h4 style={{ marginBottom: '0.5rem' }}>Robotic Execution</h4>
-              <p style={{ fontSize: '0.875rem' }}>
-                Printing executes instantly; upon completion, spring-steel swapper ejects the plate.
-              </p>
-            </div>
-
-            {/* Step 4 */}
-            <div className="pipeline-card">
-              <span className="pipeline-step-num">STEP 04</span>
-              <div className="pipeline-icon">
-                <Zap size={24} />
-              </div>
-              <h4 style={{ marginBottom: '0.5rem' }}>Continuous Queue</h4>
-              <p style={{ fontSize: '0.875rem' }}>
-                The node resets to "Idle" in seconds and immediately grabs the next queued job.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. THE SOFTWARE EXPERIENCE (Live Interactive Demo Section) */}
-      <section className="section section-alt" id="software-demo">
-        <div className="container">
-          <div className="section-header">
-            <span className="badge badge-cyan">Interactive SaaS Experience</span>
-            <h2>"Hardware is the Hook. Software is the Product."</h2>
-            <p>Test drive our cloud fleet management interface below. Pick or drop a CAD model to watch real-time dispatching and queue updates.</p>
-          </div>
-
-          <div className="software-demo-box">
-            <div className="software-demo-grid">
-              {/* Sidebar: CAD File Drop & Selection */}
-              <div className="demo-sidebar">
-                <h4 style={{ fontSize: '1rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <UploadCloud size={18} color="var(--accent)" /> CAD Dispatch Terminal
-                </h4>
-
-                <div 
-                  className="demo-drop-zone"
-                  onClick={() => handleSimulateDispatch()}
-                >
-                  <UploadCloud size={32} color="var(--accent)" style={{ margin: '0 auto 0.5rem auto' }} />
-                  <div style={{ fontWeight: 700, fontSize: '0.9rem', color: 'var(--text-main)' }}>
-                    Drop CAD File Here
-                  </div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '0.2rem' }}>
-                    Supports .STEP, .STL, .3MF
-                  </div>
-                </div>
-
-                <div style={{ marginTop: '1.5rem' }}>
-                  <div style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem' }}>
-                    Select Sample Project:
-                  </div>
-
-                  {sampleCadFiles.map((file) => (
-                    <div 
-                      key={file.id} 
-                      className={`cad-file-item ${selectedCad.id === file.id ? 'selected' : ''}`}
-                      onClick={() => setSelectedCad(file)}
-                    >
-                      <div>
-                        <div style={{ fontWeight: 700, fontSize: '0.85rem', color: 'var(--text-main)' }}>{file.name}</div>
-                        <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>{file.size} • {file.filament}</div>
-                      </div>
-                      <ChevronRight size={16} color="var(--accent)" />
-                    </div>
-                  ))}
-                </div>
-
-                <button 
-                  className="btn btn-primary btn-sm" 
-                  style={{ width: '100%', marginTop: '1.25rem' }}
-                  onClick={handleSimulateDispatch}
-                  disabled={isSimulatingDispatch}
-                >
-                  {isSimulatingDispatch ? 'Auto-Slicing & Dispatching...' : 'Dispatch Selected CAD &rarr;'}
-                </button>
-              </div>
-
-              {/* Viewport: Live Fleet Fleet Dashboard */}
-              <div className="demo-viewport">
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', borderBottom: '1px solid var(--border-light)', paddingBottom: '1rem' }}>
+              
+              <div className="bottleneck-list">
+                <div className="bottleneck-item">
+                  <div className="b-num">01</div>
                   <div>
-                    <h3 style={{ fontSize: '1.2rem', margin: 0 }}>Fleet Telemetry & Dispatch Control</h3>
-                    <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Active Farm Node Array: 3 Racks Online</div>
-                  </div>
-                  <div className="badge badge-success">
-                    <span className="badge-dot pulse"></span> Cloud Auto-Routing Active
+                    <strong>Overnight Downtime:</strong> Printers sit idle for 8–12 hours between evening job completion and morning technician arrival.
                   </div>
                 </div>
+                <div className="bottleneck-item">
+                  <div className="b-num">02</div>
+                  <div>
+                    <strong>Manual Bed Scrapes:</strong> Metal scrapers wear down PEI build sheets and risk damaging delicate printed parts.
+                  </div>
+                </div>
+                <div className="bottleneck-item">
+                  <div className="b-num">03</div>
+                  <div>
+                    <strong>Manual File Routing:</strong> Technicians manually slice files and swap SD cards or send individual print commands.
+                  </div>
+                </div>
+              </div>
+            </div>
 
-                {/* Job Dispatch Alert */}
-                <div style={{ backgroundColor: 'var(--accent-light)', border: '1px solid var(--border-accent)', borderRadius: 'var(--radius-md)', padding: '1rem 1.25rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                    <FileText size={20} color="var(--accent)" />
-                    <div>
-                      <div style={{ fontWeight: 700, fontSize: '0.9rem' }}>Target Payload: {selectedCad.name}</div>
-                      <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Estimated Duration: {selectedCad.estimatedTime} | Material: {selectedCad.filament}</div>
+            <div className="editorial-right-card">
+              <div className="solution-card-header">
+                <Zap size={24} color="var(--accent)" />
+                <h4>The Dashing Solution</h4>
+              </div>
+              <ul className="solution-bullets">
+                <li>
+                  <CheckCircle2 size={18} color="var(--accent)" />
+                  <div><strong>Automated Harvesting:</strong> Spring-steel PEI sheet flexing pops parts directly into collection bins in 14.8s.</div>
+                </li>
+                <li>
+                  <CheckCircle2 size={18} color="var(--accent)" />
+                  <div><strong>Cloud Auto-Routing:</strong> Upload STEP/STL files once; cloud engine slices and dispatches to idle farm nodes.</div>
+                </li>
+                <li>
+                  <CheckCircle2 size={18} color="var(--accent)" />
+                  <div><strong>Modular Hardware:</strong> Rack-mountable form factor scales from 2-printer desktop units to 50+ printer server arrays.</div>
+                </li>
+              </ul>
+
+              <div className="solution-card-footer">
+                <span>Result: Continuous 24/7 output with zero weekend labor overhead.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. INTERACTIVE FARM ROI CALCULATOR */}
+      <section className="section" id="interactive-simulator">
+        <div className="container">
+          <ROICalculator onOpenLOI={onOpenLOI} />
+        </div>
+      </section>
+
+      {/* 4. INTERACTIVE HARDWARE KINEMATICS & HOTSPOTS */}
+      <section className="section section-alt">
+        <div className="container">
+          <HardwareHotspots />
+        </div>
+      </section>
+
+      {/* 5. TABBED HARDWARE & SOFTWARE EXPERIENCE */}
+      <section className="section" id="software-demo">
+        <div className="container">
+          <div className="section-head-left">
+            <span className="tech-meta-tag">INTEGRATED ECOSYSTEM</span>
+            <h2>Hardware is the Hook. Software is the Product.</h2>
+            <p>Inspect our web-based fleet management platform and G-code dispatch engine.</p>
+
+            <div className="feature-tab-buttons">
+              <button 
+                className={`tab-btn ${activeFeatureTab === 'cloud-dispatch' ? 'active' : ''}`}
+                onClick={() => setActiveFeatureTab('cloud-dispatch')}
+              >
+                <UploadCloud size={16} /> Cloud Dispatch Terminal
+              </button>
+              <button 
+                className={`tab-btn ${activeFeatureTab === 'harvest-seq' ? 'active' : ''}`}
+                onClick={() => setActiveFeatureTab('harvest-seq')}
+              >
+                <RefreshCw size={16} /> Automated Ejection Logic
+              </button>
+            </div>
+          </div>
+
+          {activeFeatureTab === 'cloud-dispatch' ? (
+            <div className="software-demo-box">
+              <div className="software-demo-grid">
+                {/* Sidebar */}
+                <div className="demo-sidebar">
+                  <h4 className="sidebar-title">
+                    <UploadCloud size={18} color="var(--accent)" /> CAD Dispatch Terminal
+                  </h4>
+
+                  <div className="demo-drop-zone" onClick={handleSimulateDispatch}>
+                    <UploadCloud size={30} color="var(--accent)" style={{ margin: '0 auto 0.4rem auto' }} />
+                    <div style={{ fontWeight: 700, fontSize: '0.875rem', color: 'var(--text-main)' }}>
+                      Drop CAD File Here
+                    </div>
+                    <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '0.2rem' }}>
+                      Supports .STEP, .STL, .3MF
                     </div>
                   </div>
-                  <button className="btn btn-primary btn-sm" onClick={handleSimulateDispatch}>
-                    <Play size={14} fill="currentColor" /> Dispatch Now
+
+                  <div style={{ marginTop: '1.25rem' }}>
+                    <div className="sample-project-label">Select Sample Payload:</div>
+                    {sampleCadFiles.map((file) => (
+                      <div 
+                        key={file.id} 
+                        className={`cad-file-item ${selectedCad.id === file.id ? 'selected' : ''}`}
+                        onClick={() => setSelectedCad(file)}
+                      >
+                        <div>
+                          <div className="cad-file-name">{file.name}</div>
+                          <div className="cad-file-meta">{file.size} • {file.filament}</div>
+                        </div>
+                        <ChevronRight size={16} color="var(--accent)" />
+                      </div>
+                    ))}
+                  </div>
+
+                  <button 
+                    className="btn btn-primary btn-sm" 
+                    style={{ width: '100%', marginTop: '1.25rem' }}
+                    onClick={handleSimulateDispatch}
+                    disabled={isSimulatingDispatch}
+                  >
+                    {isSimulatingDispatch ? 'Auto-Slicing G-Code...' : 'Dispatch Selected CAD &rarr;'}
                   </button>
                 </div>
 
-                {/* Queue Table */}
-                <div style={{ background: '#FFFFFF', border: '1px solid var(--border-light)', borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
-                  <div style={{ padding: '0.85rem 1.25rem', background: 'var(--bg-secondary)', fontWeight: 700, fontSize: '0.85rem', borderBottom: '1px solid var(--border-light)', display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr' }}>
-                    <span>Job ID</span>
-                    <span>CAD File</span>
-                    <span>Target Printer</span>
-                    <span>Status</span>
+                {/* Viewport */}
+                <div className="demo-viewport">
+                  <div className="viewport-header">
+                    <div>
+                      <h3 style={{ fontSize: '1.15rem', margin: 0 }}>Fleet Telemetry & Dispatch Queue</h3>
+                      <div style={{ fontSize: '0.825rem', color: 'var(--text-muted)' }}>Active Farm Node Array: 3 Racks Online</div>
+                    </div>
+                    <div className="status-indicator-pill">
+                      <span className="status-indicator-dot"></span> Cloud Auto-Routing Active
+                    </div>
                   </div>
 
-                  {activeJobQueue.map((job) => (
-                    <div key={job.id} style={{ padding: '0.85rem 1.25rem', borderBottom: '1px solid var(--border-light)', display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', alignItems: 'center', fontSize: '0.875rem' }}>
-                      <span className="telemetry-font" style={{ fontWeight: 700, color: 'var(--accent)' }}>{job.id}</span>
-                      <span style={{ fontWeight: 600 }}>{job.name}</span>
-                      <span style={{ color: 'var(--text-muted)' }}>{job.printer}</span>
+                  <div className="dispatch-target-banner">
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                      <FileText size={20} color="var(--accent)" />
                       <div>
-                        {job.status === 'In Progress' ? (
-                          <span className="badge badge-success" style={{ fontSize: '0.75rem' }}>
-                            <span className="badge-dot pulse"></span> Printing ({job.progress}%)
-                          </span>
-                        ) : (
-                          <span className="badge badge-cyan" style={{ fontSize: '0.75rem' }}>
-                            {job.status}
-                          </span>
-                        )}
+                        <div style={{ fontWeight: 700, fontSize: '0.875rem' }}>Payload: {selectedCad.name}</div>
+                        <div style={{ fontSize: '0.775rem', color: 'var(--text-muted)' }}>Est. Duration: {selectedCad.estimatedTime} | Filament: {selectedCad.filament}</div>
                       </div>
                     </div>
-                  ))}
+                    <button className="btn btn-primary btn-sm" onClick={handleSimulateDispatch}>
+                      <Play size={14} fill="currentColor" /> Dispatch
+                    </button>
+                  </div>
+
+                  <div className="queue-table-box">
+                    <div className="queue-table-header">
+                      <span>Job ID</span>
+                      <span>CAD File</span>
+                      <span>Target Printer</span>
+                      <span>Status</span>
+                    </div>
+
+                    {activeJobQueue.map((job) => (
+                      <div key={job.id} className="queue-table-row">
+                        <span className="telemetry-font" style={{ fontWeight: 700, color: 'var(--accent)' }}>{job.id}</span>
+                        <span style={{ fontWeight: 600 }}>{job.name}</span>
+                        <span style={{ color: 'var(--text-muted)' }}>{job.printer}</span>
+                        <div>
+                          {job.status === 'In Progress' ? (
+                            <span className="badge badge-success" style={{ fontSize: '0.725rem' }}>
+                              <span className="badge-dot pulse"></span> Printing ({job.progress}%)
+                            </span>
+                          ) : (
+                            <span className="badge badge-cyan" style={{ fontSize: '0.725rem' }}>
+                              {job.status}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          ) : (
+            /* Ejection Logic Tab */
+            <div className="harvest-logic-card">
+              <div className="harvest-grid">
+                <div className="harvest-step">
+                  <div className="harvest-step-num">STAGE 01</div>
+                  <h4>Thermal Cooldown Trigger</h4>
+                  <p>Upon layer completion, bed temperature cools to 35°C, reducing PEI surface adhesion by 85% before mechanical flex.</p>
+                </div>
+                <div className="harvest-step">
+                  <div className="harvest-step-num">STAGE 02</div>
+                  <h4>3.5° Actuator Flex</h4>
+                  <p>Dual stepper actuators flex the spring-steel PEI sheet by 3.5 degrees, shearing part contact points without tools.</p>
+                </div>
+                <div className="harvest-step">
+                  <div className="harvest-step-num">STAGE 03</div>
+                  <h4>Sweep & Reset Queue</h4>
+                  <p>Precision side-arm sweeps harvested parts into the bin. Sheet resets to magnetic home position; node signals "Ready".</p>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
-      {/* 5. MODULAR DEPLOYMENT OPTIONS (Pricing & Tiers) */}
-      <section className="section">
+      {/* 6. TECHNICAL COMPARISON: DESKTOP VS ENTERPRISE */}
+      <section className="section section-alt">
         <div className="container">
-          <div className="section-header">
-            <span className="badge badge-cyan">Scalable Hardware Racks</span>
-            <h2>Modular Deployment Options</h2>
-            <p>Deploy zero-touch print nodes whether you are a prosumer or an enterprise manufacturing facility.</p>
+          <div className="section-head-left">
+            <span className="tech-meta-tag">MODULAR FORM FACTORS</span>
+            <h2>Architected for Individual Desks to Server Arrays</h2>
+            <p>Deploy zero-touch print nodes tailored to your prototyping volume.</p>
           </div>
 
-          <div className="pricing-grid">
-            {/* Tier 1 */}
-            <div className="pricing-card">
-              <div>
-                <div className="badge badge-cyan" style={{ marginBottom: '1rem' }}>Prosumer & Prototyping Desks</div>
-                <h3 style={{ fontSize: '1.75rem', marginBottom: '0.5rem' }}>Desktop Node</h3>
-                <p style={{ fontSize: '0.925rem' }}>Ideal for Etsy sellers, individual engineering desks, and small prototyping teams.</p>
+          <div className="tier-comparison-grid">
+            {/* Desktop Card */}
+            <div className="tier-card">
+              <div className="tier-badge">Prosumer & R&D Desks</div>
+              <h3 className="tier-title">Desktop Node</h3>
+              <p className="tier-desc">Compact 1-2 printer open-rack module for engineering desks and prototyping teams.</p>
+              
+              <div className="tier-price-row">
+                <span className="price-val">$1,499</span>
+                <span className="price-unit">/ per node</span>
+              </div>
 
-                <div style={{ margin: '1.5rem 0' }}>
-                  <span style={{ fontSize: '2.5rem', fontWeight: 800, color: 'var(--text-main)' }}>$1,499</span>
-                  <span style={{ color: 'var(--text-muted)' }}> / per node</span>
-                </div>
-
-                <ul className="pricing-feature-list">
-                  <li className="pricing-feature-item">
-                    <Check size={18} color="var(--accent)" /> 1–2 Printer Rack Side-Arm Harvester
-                  </li>
-                  <li className="pricing-feature-item">
-                    <Check size={18} color="var(--accent)" /> Compact Desktop Footprint (Open Frame)
-                  </li>
-                  <li className="pricing-feature-item">
-                    <Check size={18} color="var(--accent)" /> Core Web Cloud Dispatcher & Queue
-                  </li>
-                  <li className="pricing-feature-item">
-                    <Check size={18} color="var(--accent)" /> Spring-Steel Ejection Sheet Mechanism
-                  </li>
-                  <li className="pricing-feature-item">
-                    <Check size={18} color="var(--accent)" /> Klipper / Moonraker API Integration
-                  </li>
-                </ul>
+              <div className="tier-specs-list">
+                <div className="tier-spec-item"><Check size={16} color="var(--accent)" /> 1–2 Printer Side-Arm Sheet Harvester</div>
+                <div className="tier-spec-item"><Check size={16} color="var(--accent)" /> Compact Open-Frame Desktop Footprint</div>
+                <div className="tier-spec-item"><Check size={16} color="var(--accent)" /> Core Web G-Code Queue & Slicing SaaS</div>
+                <div className="tier-spec-item"><Check size={16} color="var(--accent)" /> Klipper / Moonraker API Bridge</div>
               </div>
 
               <button className="btn btn-secondary btn-lg" style={{ width: '100%', marginTop: '1.5rem' }} onClick={onOpenLOI}>
-                Reserve Desktop Node
+                Reserve Desktop Unit
               </button>
             </div>
 
-            {/* Tier 2 */}
-            <div className="pricing-card featured">
-              <span className="pricing-featured-badge">Most Popular for Scale</span>
-              <div>
-                <div className="badge badge-dark" style={{ marginBottom: '1rem' }}>Universities & Labs</div>
-                <h3 style={{ fontSize: '1.75rem', marginBottom: '0.5rem' }}>Enterprise Farm Array</h3>
-                <p style={{ fontSize: '0.925rem' }}>Designed for university labs, B2B manufacturing hubs, and 24/7 continuous micro-farms.</p>
+            {/* Enterprise Card */}
+            <div className="tier-card featured">
+              <div className="featured-banner">Enterprise Scale Choice</div>
+              <div className="tier-badge dark">Universities & Manufacturing Labs</div>
+              <h3 className="tier-title">Enterprise Farm Array</h3>
+              <p className="tier-desc">Standard 19-inch server rack integration for 24/7 continuous micro-manufacturing hubs.</p>
+              
+              <div className="tier-price-row">
+                <span className="price-val">Custom Tier</span>
+                <span className="price-unit">/ 4+ Server Racks</span>
+              </div>
 
-                <div style={{ margin: '1.5rem 0' }}>
-                  <span style={{ fontSize: '2.5rem', fontWeight: 800, color: 'var(--text-main)' }}>Custom Tier</span>
-                  <span style={{ color: 'var(--text-muted)' }}> / 4+ Server Racks</span>
-                </div>
-
-                <ul className="pricing-feature-list">
-                  <li className="pricing-feature-item">
-                    <Check size={18} color="var(--accent)" /> 19-inch Server Rack Standard Integration
-                  </li>
-                  <li className="pricing-feature-item">
-                    <Check size={18} color="var(--accent)" /> Centralized PDU Power Management & Fail-safes
-                  </li>
-                  <li className="pricing-feature-item">
-                    <Check size={18} color="var(--accent)" /> Multi-User Team Roles & Cloud Dashboard
-                  </li>
-                  <li className="pricing-feature-item">
-                    <Check size={18} color="var(--accent)" /> Optical Spaghetti Detection & Auto-Abort
-                  </li>
-                  <li className="pricing-feature-item">
-                    <Check size={18} color="var(--accent)" /> Priority Hardware Batch Delivery
-                  </li>
-                </ul>
+              <div className="tier-specs-list">
+                <div className="tier-spec-item"><Check size={16} color="var(--accent)" /> Standard 19-inch 6U Rack Module Integration</div>
+                <div className="tier-spec-item"><Check size={16} color="var(--accent)" /> Centralized PDU Power Cut & Thermal Safeguards</div>
+                <div className="tier-spec-item"><Check size={16} color="var(--accent)" /> Optical Spaghetti AI Camera Detection</div>
+                <div className="tier-spec-item"><Check size={16} color="var(--accent)" /> Multi-User Role Permissions & Docker SaaS</div>
               </div>
 
               <button className="btn btn-primary btn-lg" style={{ width: '100%', marginTop: '1.5rem' }} onClick={onOpenLOI}>
@@ -546,35 +506,33 @@ export default function LandingPage({ onOpenLOI }) {
         </div>
       </section>
 
-      {/* 6. BOTTOM CTA / LEAD CAPTURE BANNER */}
-      <section className="section" style={{ paddingTop: '2rem' }}>
+      {/* 7. BOTTOM LEAD CAPTURE / PILOT APPLICATION */}
+      <section className="section">
         <div className="container">
-          <div className="bottom-cta-box">
-            <h2>Ready to Automate Your Production?</h2>
-            <p style={{ maxWidth: '560px', margin: '1rem auto 0 auto', color: '#94A3B8' }}>
-              Join the priority beta queue to secure hardware delivery spots for your print farm.
-            </p>
+          <div className="bottom-cta-container">
+            <div className="cta-header">
+              <h2>Join the Priority Hardware Beta Queue</h2>
+              <p>Secure hardware delivery spots for your print farm and receive direct technical onboard assistance.</p>
+            </div>
 
             <form className="bottom-cta-form" onSubmit={handleLeadSubmit}>
               <input 
                 type="text" 
-                className="form-input" 
+                className="form-input custom-dark-input" 
                 placeholder="Your Name"
                 value={leadName}
                 onChange={(e) => setLeadName(e.target.value)}
-                style={{ backgroundColor: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.2)', color: '#FFFFFF' }}
               />
               <input 
                 type="email" 
-                className="form-input" 
+                className="form-input custom-dark-input" 
                 required 
                 placeholder="Work Email Address"
                 value={leadEmail}
                 onChange={(e) => setLeadEmail(e.target.value)}
-                style={{ backgroundColor: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.2)', color: '#FFFFFF' }}
               />
-              <button type="submit" className="btn btn-primary btn-lg" style={{ whiteSpace: 'nowrap' }}>
-                <span>{leadSubmitted ? 'Opening Form...' : 'Request LOI Info'}</span>
+              <button type="submit" className="btn btn-primary btn-lg">
+                <span>{leadSubmitted ? 'Opening Beta Form...' : 'Reserve Beta Spot'}</span>
                 <ArrowRight size={18} />
               </button>
             </form>

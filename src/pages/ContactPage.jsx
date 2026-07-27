@@ -56,11 +56,11 @@ export default function ContactPage({ onOpenLOI }) {
   return (
     <div className="contact-page">
       {/* Header */}
-      <section className="contact-page-header">
+      <section className="contact-page-header bg-grid-pattern-dark">
         <div className="container">
-          <div className="badge badge-dark">B2B Pilot Program & Discovery</div>
-          <h1 style={{ color: '#FFFFFF', marginTop: '0.75rem' }}>Schedule Pilot Unit & Discovery Call</h1>
-          <p style={{ color: '#94A3B8', fontSize: '1.15rem', maxWidth: '640px', marginTop: '1rem' }}>
+          <div className="tech-meta-tag light">B2B PILOT PROGRAM & DISCOVERY</div>
+          <h1 style={{ color: '#FFFFFF', marginTop: '0.5rem' }}>Schedule Pilot Unit & Discovery Call</h1>
+          <p style={{ color: '#94A3B8', fontSize: '1.1rem', maxWidth: '640px', marginTop: '1rem', lineHeight: '1.7' }}>
             Request an on-site pilot unit, schedule a technical discovery call with our founding engineering team, or submit an LOI for priority delivery.
           </p>
         </div>
@@ -72,7 +72,7 @@ export default function ContactPage({ onOpenLOI }) {
             {/* Contact / Pilot Form */}
             <div className="contact-card-box">
               <h3 style={{ marginBottom: '0.5rem' }}>Request Pilot Program Trial</h3>
-              <p style={{ fontSize: '0.9rem', marginBottom: '1.5rem' }}>
+              <p style={{ fontSize: '0.9rem', marginBottom: '1.5rem', color: 'var(--text-muted)' }}>
                 Fill out your details below to schedule an initial discovery call and reserve launch priority.
               </p>
 
@@ -154,7 +154,7 @@ export default function ContactPage({ onOpenLOI }) {
                     <CheckCircle2 size={36} />
                   </div>
                   <h3>Pilot Request Received!</h3>
-                  <p style={{ marginTop: '0.5rem', marginBottom: '1.5rem' }}>
+                  <p style={{ marginTop: '0.5rem', marginBottom: '1.5rem', color: 'var(--text-muted)' }}>
                     Thank you, <strong>{formData.name}</strong>. Our engineering team will review your farm requirements and reach out within 24 hours to schedule your discovery call.
                   </p>
                   <button className="btn btn-secondary" onClick={() => setSubmitted(false)}>
@@ -167,37 +167,37 @@ export default function ContactPage({ onOpenLOI }) {
             {/* Direct Contact Info & Perks */}
             <div>
               <div style={{ marginBottom: '2rem' }}>
-                <h3 style={{ marginBottom: '1rem' }}>Direct Founder Contact</h3>
-                <p>Have specific technical questions regarding Klipper firmware hooks, kinematic tolerances, or rack dimensions?</p>
+                <h3 style={{ marginBottom: '0.75rem' }}>Direct Founder Contact</h3>
+                <p style={{ color: 'var(--text-muted)', lineHeight: '1.6' }}>Have specific technical questions regarding Klipper firmware hooks, kinematic tolerances, or rack dimensions?</p>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', marginTop: '1.5rem' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                    <div style={{ width: 44, height: 44, borderRadius: 'var(--radius-md)', backgroundColor: 'var(--accent-light)', color: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ width: 44, height: 44, borderRadius: 'var(--radius-md)', backgroundColor: 'var(--accent-light)', color: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                       <Mail size={22} />
                     </div>
                     <div>
-                      <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Email Inquiry</div>
-                      <div style={{ fontWeight: 700, fontSize: '1rem' }}>info@dashingtechnologies.com</div>
+                      <div style={{ fontSize: '0.775rem', color: 'var(--text-muted)' }}>Email Inquiry</div>
+                      <div style={{ fontWeight: 700, fontSize: '0.975rem' }}>info@dashingtechnologies.com</div>
                     </div>
                   </div>
 
                   <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                    <div style={{ width: 44, height: 44, borderRadius: 'var(--radius-md)', backgroundColor: 'var(--accent-light)', color: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ width: 44, height: 44, borderRadius: 'var(--radius-md)', backgroundColor: 'var(--accent-light)', color: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                       <Calendar size={22} />
                     </div>
                     <div>
-                      <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Discovery Meeting</div>
-                      <div style={{ fontWeight: 700, fontSize: '1rem' }}>30-Minute Founders Video Call</div>
+                      <div style={{ fontSize: '0.775rem', color: 'var(--text-muted)' }}>Discovery Meeting</div>
+                      <div style={{ fontWeight: 700, fontSize: '0.975rem' }}>30-Minute Founders Video Call</div>
                     </div>
                   </div>
 
                   <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                    <div style={{ width: 44, height: 44, borderRadius: 'var(--radius-md)', backgroundColor: 'var(--accent-light)', color: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ width: 44, height: 44, borderRadius: 'var(--radius-md)', backgroundColor: 'var(--accent-light)', color: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                       <MapPin size={22} />
                     </div>
                     <div>
-                      <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Headquarters</div>
-                      <div style={{ fontWeight: 700, fontSize: '1rem' }}>San Francisco, CA / Hardware Lab</div>
+                      <div style={{ fontSize: '0.775rem', color: 'var(--text-muted)' }}>Headquarters</div>
+                      <div style={{ fontWeight: 700, fontSize: '0.975rem' }}>San Francisco, CA / Hardware Lab</div>
                     </div>
                   </div>
                 </div>
@@ -205,28 +205,29 @@ export default function ContactPage({ onOpenLOI }) {
 
               {/* Priority Placement Box */}
               <div style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-accent)', borderRadius: 'var(--radius-md)', padding: '1.5rem' }}>
-                <div className="badge badge-cyan" style={{ marginBottom: '0.5rem' }}>
-                  <ShieldCheck size={14} /> Launch Priority Priority
+                <div className="use-case-category-tag" style={{ marginBottom: '0.4rem' }}>
+                  <ShieldCheck size={15} /> LAUNCH PRIORITY
                 </div>
-                <h4 style={{ marginBottom: '0.5rem' }}>Signing a Letter of Intent (LOI)</h4>
-                <p style={{ fontSize: '0.875rem' }}>
+                <h4 style={{ marginBottom: '0.4rem' }}>Signing a Letter of Intent (LOI)</h4>
+                <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', lineHeight: '1.6' }}>
                   B2B customers who submit a signed LOI receive early evaluation access, custom CAD integration support, and fixed launch batch pricing.
                 </p>
                 <button className="btn btn-primary btn-sm" style={{ marginTop: '1rem' }} onClick={onOpenLOI}>
-                  Open Digital LOI Modal &rarr;
+                  <span>Open Digital LOI Modal</span>
+                  <ArrowRight size={14} />
                 </button>
               </div>
             </div>
           </div>
 
           {/* FAQ Accordion */}
-          <div style={{ marginTop: '5rem' }}>
-            <div className="section-header" style={{ marginBottom: '2.5rem' }}>
-              <span className="badge badge-dark">Frequently Asked Questions</span>
+          <div style={{ marginTop: '4.5rem' }}>
+            <div className="section-head-left" style={{ marginBottom: '2rem' }}>
+              <span className="tech-meta-tag">FREQUENTLY ASKED QUESTIONS</span>
               <h2>Technical & Pilot FAQs</h2>
             </div>
 
-            <div style={{ maxWidth: '840px', margin: '0 auto' }}>
+            <div style={{ maxWidth: '840px' }}>
               {faqs.map((faq, idx) => (
                 <div key={idx} className="faq-accordion-item">
                   <div className="faq-question" onClick={() => toggleFaq(idx)}>
