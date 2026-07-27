@@ -1,0 +1,59 @@
+.tech-page-header {
+  padding: 4rem 0 3rem 0;
+  background: var(--bg-dark);
+  color: #FFFFFF;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tech-hero-subtitle {
+  color: #94A3B8;
+  font-size: 1.15rem;
+  max-width: 680px;
+  margin-top: 1rem;
+}
+
+.schematic-box {
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-md);
+  margin: 2.5rem 0;
+}
+
+.schematic-svg-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background: var(--bg-secondary);
+  border: 1px dashed var(--accent);
+  border-radius: var(--radius-md);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spec-matrix-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2rem;
+  font-size: 0.95rem;
+}
+
+.spec-matrix-table th {
+  background-color: var(--bg-secondary);
+  text-align: left;
+  padding: 1rem 1.25rem;
+  font-weight: 700;
+  border-bottom: 2px solid var(--border-light);
+}
+
+.spec-matrix-table td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.spec-matrix-table tr:hover td {
+  background-color: #F1F5F9;
+}

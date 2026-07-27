@@ -1,0 +1,101 @@
+.loi-modal-header {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-secondary);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.loi-modal-body {
+  padding: 2rem;
+}
+
+.loi-step-indicator {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.loi-step-pill {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--border-light);
+  transition: background-color var(--transition-fast);
+}
+
+.loi-step-pill.active {
+  background-color: var(--accent);
+}
+
+.tier-select-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.tier-select-card {
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  background-color: var(--bg-primary);
+}
+
+.tier-select-card:hover {
+  border-color: var(--border-accent);
+  transform: translateY(-2px);
+}
+
+.tier-select-card.selected {
+  border-color: var(--accent);
+  background-color: var(--accent-light);
+}
+
+.tier-price {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--accent);
+  margin-top: 0.5rem;
+}
+
+.close-btn {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: all var(--transition-fast);
+}
+
+.close-btn:hover {
+  color: var(--text-main);
+  background: var(--bg-tertiary);
+}
+
+.success-box {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+}
+
+.success-icon-wrapper {
+  width: 72px;
+  height: 72px;
+  background-color: var(--success-bg);
+  color: var(--success);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem auto;
+  border: 2px solid #A7F3D0;
+}
