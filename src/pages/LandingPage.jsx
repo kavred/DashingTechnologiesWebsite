@@ -21,7 +21,7 @@ export default function LandingPage({ onOpenLOI }) {
   // CAD Demo state
   const [selectedCad, setSelectedCad] = useState({
     id: 1,
-    name: 'housing_v4_mount.step',
+    name: 'housing_v1_mount.step',
     size: '14.2 MB',
     estimatedTime: '42 mins',
     filament: 'PETG Carbon',
@@ -29,9 +29,9 @@ export default function LandingPage({ onOpenLOI }) {
   });
   const [isSimulatingDispatch, setIsSimulatingDispatch] = useState(false);
   const [activeJobQueue, setActiveJobQueue] = useState([
-    { id: 'JOB-904', name: 'housing_v4_mount.step', printer: 'Node #01', status: 'In Progress', progress: 84 },
+    { id: 'JOB-904', name: 'housing_v1_mount.step', printer: 'Node #01', status: 'In Progress', progress: 84 },
     { id: 'JOB-905', name: 'impeller_blade.stl', printer: 'Node #02', status: 'Queued', progress: 0 },
-    { id: 'JOB-906', name: 'sensor_bracket_v2.step', printer: 'Node #01', status: 'Queued', progress: 0 },
+    { id: 'JOB-906', name: 'sensor_bracket_v1.step', printer: 'Node #01', status: 'Queued', progress: 0 },
   ]);
 
   // Lead form state
@@ -51,8 +51,8 @@ export default function LandingPage({ onOpenLOI }) {
   }, []);
 
   const sampleCadFiles = [
-    { id: 1, name: 'housing_v4_mount.step', size: '14.2 MB', estimatedTime: '42 mins', filament: 'PETG Carbon', status: 'Ready to Dispatch' },
-    { id: 2, name: 'titanium_bracket_r3.stl', size: '8.7 MB', estimatedTime: '1 hr 18 mins', filament: 'PLA Pro', status: 'Ready to Dispatch' },
+    { id: 1, name: 'housing_v1_mount.step', size: '14.2 MB', estimatedTime: '42 mins', filament: 'PETG Carbon', status: 'Ready to Dispatch' },
+    { id: 2, name: 'titanium_bracket_r1.stl', size: '8.7 MB', estimatedTime: '1 hr 18 mins', filament: 'PLA Pro', status: 'Ready to Dispatch' },
     { id: 3, name: 'drone_arm_assembly.step', size: '22.5 MB', estimatedTime: '2 hrs 05 mins', filament: 'ABS Reinforced', status: 'Ready to Dispatch' }
   ];
 
