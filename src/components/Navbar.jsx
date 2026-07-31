@@ -8,6 +8,18 @@ export default function Navbar({ onOpenLOI }) {
 
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
 
+  // Lock body scroll when mobile drawer is open to prevent background bleed/scroll
+  React.useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
+
   return (
     <nav className="navbar">
       <div className="container navbar-container">
@@ -57,39 +69,41 @@ export default function Navbar({ onOpenLOI }) {
       </div>
 
       {mobileMenuOpen && (
-        <div className="mobile-drawer">
-          <ul className="mobile-nav-list">
-            <li>
-              <Link to="/" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
-                <span>Product Overview</span>
-                <ArrowRight size={18} />
-              </Link>
-            </li>
-            <li>
-              <Link to="/technology" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
-                <span>Kinematics & Specs</span>
-                <ArrowRight size={18} />
-              </Link>
-            </li>
-            <li>
-              <Link to="/use-cases" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
-                <span>Farm Deployment</span>
-                <ArrowRight size={18} />
-              </Link>
-            </li>
-            <li>
-              <Link to="/contact" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
-                <span>Pilot Program</span>
-                <ArrowRight size={18} />
-              </Link>
-            </li>
-          </ul>
+        <div className="mobile-overlay" onClick={() => setMobileMenuOpen(false)}>
+          <div className="mobile-drawer" onClick={(e) => e.stopPropagation()}>
+            <ul className="mobile-nav-list">
+              <li>
+                <Link to="/" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
+                  <span>Product Overview</span>
+                  <ArrowRight size={18} />
+                </Link>
+              </li>
+              <li>
+                <Link to="/technology" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
+                  <span>Kinematics & Specs</span>
+                  <ArrowRight size={18} />
+                </Link>
+              </li>
+              <li>
+                <Link to="/use-cases" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
+                  <span>Farm Deployment</span>
+                  <ArrowRight size={18} />
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
+                  <span>Pilot Program</span>
+                  <ArrowRight size={18} />
+                </Link>
+              </li>
+            </ul>
 
-          <div style={{ marginTop: '2rem' }}>
-            <button className="btn btn-primary btn-lg" style={{ width: '100%' }} onClick={() => { setMobileMenuOpen(false); onOpenLOI(); }}>
-              <span>Reserve Dasher 1</span>
-              <ArrowRight size={18} />
-            </button>
+            <div style={{ marginTop: '1.75rem' }}>
+              <button className="btn btn-primary btn-lg" style={{ width: '100%' }} onClick={() => { setMobileMenuOpen(false); onOpenLOI(); }}>
+                <span>Reserve Dasher 1</span>
+                <ArrowRight size={18} />
+              </button>
+            </div>
           </div>
         </div>
       )}
