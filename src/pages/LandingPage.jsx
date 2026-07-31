@@ -5,7 +5,6 @@ import {
   Sliders, FileText, CheckCircle2, ChevronRight, Eye, Terminal, Clock
 } from 'lucide-react';
 import ROICalculator from '../components/ROICalculator';
-import HardwareHotspots from '../components/HardwareHotspots';
 import './LandingPage.css';
 
 export default function LandingPage({ onOpenLOI }) {
@@ -272,13 +271,6 @@ export default function LandingPage({ onOpenLOI }) {
       <section className="section" id="interactive-simulator">
         <div className="container">
           <ROICalculator onOpenLOI={onOpenLOI} />
-        </div>
-      </section>
-
-      {/* 4. INTERACTIVE HARDWARE KINEMATICS & HOTSPOTS */}
-      <section className="section section-alt">
-        <div className="container">
-          <HardwareHotspots />
         </div>
       </section>
 
