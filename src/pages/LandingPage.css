@@ -2,29 +2,37 @@
   overflow-x: hidden;
 }
 
-/* Hero Section Styling */
+/* Hero Section Styling - Full Screen Viewport Fit */
 .hero-section {
-  padding: 5rem 0 4rem 0;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  padding: 3.5rem 0;
   border-bottom: 1px solid var(--border-light);
   position: relative;
 }
 
 @media (min-width: 992px) {
   .hero-section {
-    padding: 6.5rem 0 5.5rem 0;
+    padding: 2.5rem 0;
   }
+}
+
+.hero-section .container {
+  width: 100%;
 }
 
 .hero-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 3.5rem;
+  gap: 3rem;
   align-items: center;
 }
 
 @media (min-width: 992px) {
   .hero-grid {
     grid-template-columns: 1.1fr 0.9fr;
+    gap: 3.5rem;
   }
 }
 
