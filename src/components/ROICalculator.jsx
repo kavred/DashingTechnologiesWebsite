@@ -108,7 +108,7 @@ export default function ROICalculator({ onOpenLOI }) {
         {/* Results Metrics Column */}
         <div className="roi-results-box">
           <div className="roi-metric-highlight">
-            <div className="metric-label">Estimated Annual Labor Savings</div>
+            <div className="metric-label">Estimated Annual Labor Savings From Printer Resetting</div>
             <div className="metric-primary-value">
               ${annualSavings.toLocaleString()}
             </div>
