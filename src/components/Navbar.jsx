@@ -46,7 +46,7 @@ export default function Navbar({ onOpenLOI }) {
 
         <div className="nav-actions">
           <button className="btn btn-primary btn-sm nav-cta-btn" onClick={onOpenLOI}>
-            <span>Reserve v1 Unit</span>
+            <span>Reserve Dasher 1</span>
             <ArrowRight size={15} />
           </button>
         </div>
@@ -87,7 +87,7 @@ export default function Navbar({ onOpenLOI }) {
 
           <div style={{ marginTop: '2rem' }}>
             <button className="btn btn-primary btn-lg" style={{ width: '100%' }} onClick={() => { setMobileMenuOpen(false); onOpenLOI(); }}>
-              <span>Reserve v1 Unit</span>
+              <span>Reserve Dasher 1</span>
               <ArrowRight size={18} />
             </button>
           </div>

@@ -94,7 +94,7 @@ export default function HardwareHotspots() {
         {/* SVG Blueprint Viewer */}
         <div className="blueprint-canvas-box">
           <div className="blueprint-canvas-header">
-            <div className="blueprint-title">SCHEMATIC FIG 1.0 — DASHING AUTOMATED RACK NODE (v1 Architecture)</div>
+            <div className="blueprint-title">SCHEMATIC FIG 1.0 — DASHER 1 AUTOMATED RACK NODE</div>
             <div className="blueprint-status"><span className="status-dot"></span> LIVE VECTOR SCHEMATIC</div>
           </div>
 

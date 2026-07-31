@@ -47,7 +47,7 @@ export default function ROICalculator({ onOpenLOI }) {
               className="roi-slider"
             />
             <div className="roi-range-labels">
-              <span>2 Desktop Nodes</span>
+              <span>2 Dasher 1 Units</span>
               <span>25 Mid-Farm</span>
               <span>50 Enterprise Array</span>
             </div>

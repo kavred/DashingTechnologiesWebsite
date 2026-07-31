@@ -13,7 +13,7 @@ export default function TechnologyPage({ onOpenLOI }) {
       <section className="tech-page-header bg-grid-pattern-dark">
         <div className="container">
           <div className="tech-meta-tag light">KINEMATIC & FIRMWARE ARCHITECTURE</div>
-          <h1 style={{ color: '#FFFFFF', marginTop: '0.5rem' }}>Product Specs & Kinematic Engineering</h1>
+          <h1 style={{ color: '#FFFFFF', marginTop: '0.5rem' }}>Dasher 1 Specs & Kinematic Engineering</h1>
           <p className="tech-hero-subtitle">
             Engineered for lab CTOs and enterprise production managers requiring sub-10 micron positioning, Klipper API compatibility, and optical fail-safes.
           </p>
@@ -124,7 +124,7 @@ export default function TechnologyPage({ onOpenLOI }) {
               <thead>
                 <tr>
                   <th>Specification Parameter</th>
-                  <th>Desktop Node (1-2 Printers)</th>
+                  <th>Dasher 1 (1-2 Printers)</th>
                   <th>Enterprise Farm Array (4+ Racks)</th>
                 </tr>
               </thead>

@@ -195,7 +195,7 @@ export default function LandingPage({ onOpenLOI }) {
                 </div>
 
                 <div className="monitor-footer">
-                  <span>Next in Queue: <strong>impeller_blade.stl</strong></span>
+                  <span>Next in Queue: <strong>impeller_blade.gcode</strong></span>
                   <span className="test-eject-btn" onClick={() => alert('Robotic eject mechanism status: Nominal')}>
                     Test Eject Arm &rarr;
                   </span>
@@ -437,7 +437,7 @@ export default function LandingPage({ onOpenLOI }) {
             {/* Desktop Card */}
             <div className="tier-card">
               <div className="tier-badge">Prosumer & R&D Desks</div>
-              <h3 className="tier-title">Desktop Node</h3>
+              <h3 className="tier-title">Dasher 1</h3>
               <p className="tier-desc">Compact 1-2 printer open-rack module for engineering desks and prototyping teams.</p>
               
               <div className="tier-price-row">
@@ -453,7 +453,7 @@ export default function LandingPage({ onOpenLOI }) {
               </div>
 
               <button className="btn btn-secondary btn-lg" style={{ width: '100%', marginTop: '1.5rem' }} onClick={onOpenLOI}>
-                Reserve Desktop Unit
+                Reserve Dasher 1
               </button>
             </div>
 
