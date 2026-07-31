@@ -87,8 +87,8 @@ export default function LandingPage({ onOpenLOI }) {
           <div className="hero-grid">
             <div className="hero-content">
               <h1 className="hero-title">
-                Zero-Touch 3D Printing.<br />
-                <span className="hero-title-highlight">Continuous Unattended Yield.</span>
+                Printer So Good...<br />
+                <span className="hero-title-highlight">It Doesn't Need You.</span>
               </h1>
               
               <p className="hero-subtitle">
@@ -97,7 +97,7 @@ export default function LandingPage({ onOpenLOI }) {
 
               <div className="hero-cta-group">
                 <button className="btn btn-primary btn-lg" onClick={onOpenLOI}>
-                  <span>Reserve Early Access Unit</span>
+                  <span>Reserve Dasher 1</span>
                   <ArrowRight size={18} />
                 </button>
                 <a href="#interactive-simulator" className="btn btn-secondary btn-lg">
