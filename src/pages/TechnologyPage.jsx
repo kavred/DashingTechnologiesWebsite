@@ -3,7 +3,6 @@ import {
   Cpu, Layers, ShieldCheck, Activity, Terminal, Server, 
   Settings, CheckCircle2, ArrowRight, Download, Zap, RefreshCw, Eye 
 } from 'lucide-react';
-import HardwareHotspots from '../components/HardwareHotspots';
 import './TechnologyPage.css';
 
 export default function TechnologyPage({ onOpenLOI }) {
@@ -17,13 +16,6 @@ export default function TechnologyPage({ onOpenLOI }) {
           <p className="tech-hero-subtitle">
             Engineered for lab CTOs and enterprise production managers requiring sub-10 micron positioning, Klipper API compatibility, and optical fail-safes.
           </p>
-        </div>
-      </section>
-
-      {/* 1. INTERACTIVE BLUEPRINT SPECIFICATION SECTION */}
-      <section className="section">
-        <div className="container">
-          <HardwareHotspots />
         </div>
       </section>
 
