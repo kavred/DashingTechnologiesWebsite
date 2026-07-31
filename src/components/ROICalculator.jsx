@@ -8,15 +8,21 @@ export default function ROICalculator({ onOpenLOI }) {
   const [hourlyRate, setHourlyRate] = useState(35);
 
   // Calculations
-  // Average technician time spent clearing bed, resetting, reloading, inspecting: ~0.65 hrs per print cycle per printer
-  const cyclesPerDay = Math.floor(dailyHours / 4); // assuming ~4hr avg job
+  // Average technician time spent clearing bed, resetting, reloading, inspecting: ~0.25 hrs (15 mins) per print cycle
+  const cyclesPerDay = Math.floor(dailyHours / 4); // assuming ~4hr avg job duration
   const totalJobsPerMonth = printerCount * cyclesPerDay * 30;
-  const laborHoursSavedMonthly = Math.round(totalJobsPerMonth * 0.25); // ~15 mins labor saved per job cycle
+  const laborHoursSavedMonthly = Math.round(totalJobsPerMonth * 0.25); // 15 mins saved per job cycle
   const monthlyLaborSavings = laborHoursSavedMonthly * hourlyRate;
   const annualSavings = monthlyLaborSavings * 12;
   
   // Extra unattended print hours unlocked (night/weekend continuous queue)
   const additionalYieldHours = Math.round(printerCount * 8 * 30); // 8 extra overnight hours per printer
+
+  // Dynamic Payback Period Estimate ($1,200 estimated automation module cost per node)
+  const estimatedHardwareCost = printerCount * 1200;
+  const paybackMonths = monthlyLaborSavings > 0 
+    ? (estimatedHardwareCost / monthlyLaborSavings).toFixed(1) 
+    : '0.0';
 
   return (
     <div className="roi-calculator-card">
@@ -24,7 +30,7 @@ export default function ROICalculator({ onOpenLOI }) {
         <div className="roi-header-badge">
           <Calculator size={16} /> Interactive Fleet Yield & Financial Simulator
         </div>
-        <h3>Calculate Your Print Farm's Unattended ROI</h3>
+        <h3>Calculate Your Print Farm's Unattended ROI*</h3>
         <p>See how much technician labor cost you eliminate and how many extra production hours you unlock with automated harvesting.</p>
       </div>
 
@@ -124,21 +130,32 @@ export default function ROICalculator({ onOpenLOI }) {
               <div className="mini-icon"><TrendingUp size={18} color="var(--success)" /></div>
               <div>
                 <div className="mini-value">+{additionalYieldHours.toLocaleString()} hrs</div>
-                <div className="mini-label">Unattended Print Capacity / Mo</div>
+                <div className="mini-label">Unattended Capacity / Mo</div>
               </div>
             </div>
           </div>
 
           <div className="roi-action-bar">
             <div className="roi-payback-tag">
-              <ShieldCheck size={16} color="var(--success)" /> Estimated Payback: <strong>3.2 Months</strong>
+              <ShieldCheck size={16} color="var(--success)" /> Estimated Payback: <strong>{paybackMonths} Months</strong>
             </div>
             <button className="btn btn-primary btn-sm" onClick={onOpenLOI}>
-              <span>Get Detailed Fleet Proposal</span>
+              <span>Get Fleet Proposal</span>
               <ArrowRight size={14} />
             </button>
           </div>
         </div>
+      </div>
+
+      {/* Formula Definition Footer */}
+      <div className="roi-formula-footer">
+        <div className="roi-formula-title">
+          <strong>* ROI Calculation Formula & Methodology:</strong>
+        </div>
+        <p className="roi-formula-text">
+          <strong>Annual Savings</strong> = (Printers × Daily Jobs × 30 days × 0.25 hrs labor saved per job) × Hourly Rate × 12 months.
+          Assumes an average 4-hour job duration, 15 minutes of manual labor eliminated per harvest/reset cycle, and 8 hours of unlocked overnight production capacity per printer.
+        </p>
       </div>
     </div>
   );
