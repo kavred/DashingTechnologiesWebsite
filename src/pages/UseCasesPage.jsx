@@ -42,7 +42,7 @@ export default function UseCasesPage({ onOpenLOI }) {
                       <CheckCircle2 size={18} color="var(--accent)" /> 2x Faster Product Iteration Cycles
                     </li>
                     <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.95rem' }}>
-                      <CheckCircle2 size={18} color="var(--accent)" /> Zero Morning Plate-Clearing Delay
+                      <CheckCircle2 size={18} color="var(--accent)" /> Zero Downtime Between Print Jobs
                     </li>
                   </ul>
 
@@ -55,7 +55,7 @@ export default function UseCasesPage({ onOpenLOI }) {
                   <div className="case-stat-badge">+210%</div>
                   <div style={{ fontWeight: 700, fontSize: '1.1rem', color: 'var(--text-main)' }}>Weekly Prototype Yield</div>
                   <p style={{ fontSize: '0.9rem', marginTop: '0.5rem', color: 'var(--text-muted)' }}>
-                    "Our engineering team used to waste 2 hours every morning scraping plates and restarting failed jobs. With Dashing, we run continuous 16-hour overnight queues with zero technician supervision."
+                    "Our engineering team used to waste 2 hours every morning swapping build plates and restarting jobs. With Dasher 1, plates change automatically and the next job starts immediately—zero technician supervision."
                   </p>
                   <div style={{ marginTop: '1rem', fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: 600 }}>
                     — Lead Mechatronics Engineer, Defense R&D Lab

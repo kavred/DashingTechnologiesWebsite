@@ -113,7 +113,7 @@ export default function ROICalculator({ onOpenLOI }) {
               ${annualSavings.toLocaleString()}
             </div>
             <div className="metric-sub-text">
-              Direct reduction in manual bed scraping and reset labor.
+              Direct reduction in manual build plate swap and job reset labor.
             </div>
           </div>
 

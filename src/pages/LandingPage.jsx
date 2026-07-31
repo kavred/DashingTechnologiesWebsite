@@ -227,7 +227,7 @@ export default function LandingPage({ onOpenLOI }) {
                 <div className="bottleneck-item">
                   <div className="b-num">02</div>
                   <div>
-                    <strong>Manual Bed Scrapes:</strong> Metal scrapers wear down PEI build sheets and risk damaging delicate printed parts.
+                    <strong>Manual Build Plate Swaps:</strong> Technicians must physically swap build plates between jobs, creating bottlenecks and limiting continuous throughput.
                   </div>
                 </div>
                 <div className="bottleneck-item">
