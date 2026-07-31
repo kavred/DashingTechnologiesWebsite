@@ -16,10 +16,6 @@ export default function Footer({ onOpenLOI }) {
             <p style={{ maxWidth: '340px' }}>
               Zero-Touch 3D Printing & Modular Robotic Harvesting. Continuous unattended yield from desktop racks to enterprise server arrays.
             </p>
-            <div className="footer-status-indicator">
-              <span className="badge-dot pulse" style={{ backgroundColor: '#38BDF8' }}></span>
-              Cloud Dispatch Engine API 99.99% Operational
-            </div>
           </div>
 
           <div>
