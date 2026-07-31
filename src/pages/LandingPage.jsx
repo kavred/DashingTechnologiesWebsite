@@ -196,9 +196,6 @@ export default function LandingPage({ onOpenLOI }) {
 
                 <div className="monitor-footer">
                   <span>Next in Queue: <strong>impeller_blade.gcode</strong></span>
-                  <span className="test-eject-btn" onClick={() => alert('Plate swapper mechanism status: Nominal')}>
-                    Test Plate Swapper &rarr;
-                  </span>
                 </div>
               </div>
             </div>
