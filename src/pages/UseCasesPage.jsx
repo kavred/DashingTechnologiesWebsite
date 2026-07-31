@@ -34,7 +34,7 @@ export default function UseCasesPage({ onOpenLOI }) {
                   </div>
                   <h2>Overnight Prototyping Queues</h2>
                   <p style={{ marginTop: '0.75rem', marginBottom: '1.25rem' }}>
-                    Engineers submit CAD iterations before leaving at 5 PM. Dashing nodes print overnight, flex-eject completed parts into bin trays, and reset automatically. Engineers arrive at 8 AM to find 3 consecutive iterations ready for inspection.
+                    Engineers queue up pre-sliced G-code files before leaving at 5 PM. Dashing nodes print overnight, flex-eject completed parts into bin trays, and reset automatically. Engineers arrive at 8 AM to find 3 consecutive iterations ready for inspection.
                   </p>
 
                   <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.6rem', marginBottom: '1.5rem' }}>
@@ -71,7 +71,7 @@ export default function UseCasesPage({ onOpenLOI }) {
                   <div className="case-stat-badge">100%</div>
                   <div style={{ fontWeight: 700, fontSize: '1.1rem', color: 'var(--text-main)' }}>Automated Student Submissions</div>
                   <p style={{ fontSize: '0.9rem', marginTop: '0.5rem', color: 'var(--text-muted)' }}>
-                    "Managing 400 engineering students' STL files used to require 3 full-time lab TAs. Now students upload via cloud portal, and the Dashing array handles auto-slicing, printing, and ejection."
+                    "Managing 400 engineering students' G-code files used to require 3 full-time lab TAs. Now students upload via the cloud portal, and the Dashing array handles queuing, printing, and ejection automatically."
                   </p>
                   <div style={{ marginTop: '1rem', fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: 600 }}>
                     — Innovation Hub Director, Robotics University
