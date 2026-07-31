@@ -3,7 +3,6 @@ import {
   Building2, GraduationCap, Factory, TrendingUp, 
   Clock, DollarSign, ArrowRight, CheckCircle2, ShieldCheck 
 } from 'lucide-react';
-import ROICalculator from '../components/ROICalculator';
 import './UseCasesPage.css';
 
 export default function UseCasesPage({ onOpenLOI }) {
@@ -143,13 +142,6 @@ export default function UseCasesPage({ onOpenLOI }) {
             </div>
 
           </div>
-        </div>
-      </section>
-
-      {/* INTERACTIVE ROI & PRODUCTIVITY CALCULATOR */}
-      <section className="section section-alt">
-        <div className="container">
-          <ROICalculator onOpenLOI={onOpenLOI} />
         </div>
       </section>
     </div>
