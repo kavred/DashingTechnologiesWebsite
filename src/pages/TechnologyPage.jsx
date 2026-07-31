@@ -123,7 +123,7 @@ export default function TechnologyPage({ onOpenLOI }) {
               <tbody>
                 <tr>
                   <td><strong>Build Volume / Printer</strong></td>
-                  <td><span className="telemetry-font">256 x 256 x 256 mm</span></td>
+                  <td><span className="telemetry-font">300 x 300 x 300 mm</span></td>
                   <td><span className="telemetry-font">300 x 300 x 300 mm (Expandable)</span></td>
                 </tr>
                 <tr>
@@ -133,18 +133,18 @@ export default function TechnologyPage({ onOpenLOI }) {
                 </tr>
                 <tr>
                   <td><strong>Max Bed Temp</strong></td>
-                  <td><span className="telemetry-font">110 °C Aluminum Magnetic</span></td>
+                  <td><span className="telemetry-font">120 °C AC High-Heat Magnetic</span></td>
                   <td><span className="telemetry-font">120 °C AC High-Heat Magnetic</span></td>
                 </tr>
                 <tr>
                   <td><strong>Ejection Mechanism</strong></td>
-                  <td>Multi-Plate Storage Rack</td>
-                  <td>Multi-Sheet Conveyor / Rack Elevator</td>
+                  <td>Multi-Plate Storage Rack System</td>
+                  <td>Multi-Plate Storage Rack System</td>
                 </tr>
                 <tr>
                   <td><strong>Firmware API Bridge</strong></td>
-                  <td>Klipper + Moonraker WebSocket API</td>
-                  <td>Klipper Enterprise Cluster + Docker SaaS</td>
+                  <td>Klipper + Moonraker</td>
+                  <td>Klipper + Moonraker</td>
                 </tr>
                 <tr>
                   <td><strong>Power Requirements</strong></td>
