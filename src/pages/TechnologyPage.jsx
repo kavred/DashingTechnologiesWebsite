@@ -35,7 +35,7 @@ export default function TechnologyPage({ onOpenLOI }) {
               <span className="tech-meta-tag">AUTOMATED PLATE SWAPPING</span>
               <h2>Multi-Plate Storage Rack System</h2>
               <p style={{ marginBottom: '1.25rem' }}>
-                The storage rack mechanism uses a dedicated gantry and magnetic latching to swap entire build plates automatically. When a print finishes, the plate is slotted securely into a multi-tiered magazine rack, allowing the printer to pull a fresh sheet and begin the next job immediately while you collect parts on your own time.
+                The storage rack mechanism uses a dedicated gantry and magnetic latching to swap entire build plates automatically. When a print finishes, the plate is slotted securely into a multi-tiered storage rack, allowing the printer to pull a fresh sheet and begin the next job immediately while you collect parts on your own time.
               </p>
 
               <div className="spec-highlight-box">
@@ -86,9 +86,9 @@ export default function TechnologyPage({ onOpenLOI }) {
           <div className="safety-grid">
             <div className="safety-card">
               <Eye size={28} color="var(--accent)" style={{ marginBottom: '0.85rem' }} />
-              <h4>Optical AI Spaghetti Detection</h4>
+              <h4>Optical AI Failure Detection</h4>
               <p style={{ fontSize: '0.9rem', marginTop: '0.4rem' }}>
-                Onboard 1080p camera runs layer-by-layer neural network inference. Automatically pauses heating and notifies technicians if spaghetti detachment occurs.
+                Onboard 1080p camera runs layer-by-layer neural network inference. Automatically stops the print and notifies technicians if a print failure occurs.
               </p>
             </div>
 

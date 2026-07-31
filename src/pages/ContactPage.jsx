@@ -48,8 +48,8 @@ export default function ContactPage({ onOpenLOI }) {
       a: "Yes! Our Enterprise Farm Array modules are designed specifically for standard 19-inch server racks with integrated power distribution (PDU) and Ethernet telemetry."
     },
     {
-      q: "How does optical spaghetti detection work?",
-      a: "Our local node controller runs real-time computer vision inference on 1080p camera feeds. If it detects print detachment or layer drift, it automatically halts extrusion and alerts your cloud dashboard."
+      q: "How does optical AI failure detection work?",
+      a: "Our local node controller runs real-time computer vision inference on 1080p camera feeds. If it detects print failure or layer drift, it automatically stops the print and alerts your dashboard."
     }
   ];
 
