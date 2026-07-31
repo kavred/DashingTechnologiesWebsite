@@ -87,10 +87,6 @@ export default function LandingPage({ onOpenLOI }) {
         <div className="container">
           <div className="hero-grid">
             <div className="hero-content">
-              <div className="tech-meta-tag">
-                <span className="meta-dot"></span> CONTINUOUS 3D HARVESTING ARCHITECTURE
-              </div>
-              
               <h1 className="hero-title">
                 Zero-Touch 3D Printing.<br />
                 <span className="hero-title-highlight">Continuous Unattended Yield.</span>
