@@ -257,7 +257,7 @@ export default function LandingPage({ onOpenLOI }) {
               </ul>
 
               <div className="solution-card-footer">
-                <span>Result: Continuous 24/7 output with zero weekend labor overhead.</span>
+                <span>Result: Continuous 24/7 output with zero night/weekend labor overhead.</span>
               </div>
             </div>
           </div>
