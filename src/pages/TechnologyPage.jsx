@@ -127,9 +127,9 @@ export default function TechnologyPage({ onOpenLOI }) {
                   <td><span className="telemetry-font">300 x 300 x 300 mm (Expandable)</span></td>
                 </tr>
                 <tr>
-                  <td><strong>Max Hotend Temp</strong></td>
-                  <td><span className="telemetry-font">300 °C (All-Metal High Flow)</span></td>
-                  <td><span className="telemetry-font">350 °C (Hardened Steel / Titanium)</span></td>
+                  <td><strong>Hotend Type</strong></td>
+                  <td><span className="telemetry-font">Brass</span></td>
+                  <td><span className="telemetry-font">Hardened Steel</span></td>
                 </tr>
                 <tr>
                   <td><strong>Max Bed Temp</strong></td>
