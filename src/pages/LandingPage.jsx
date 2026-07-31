@@ -92,7 +92,7 @@ export default function LandingPage({ onOpenLOI }) {
               </h1>
               
               <p className="hero-subtitle">
-                Eliminate manual bed scraping. Upload pre-sliced G-code to our cloud platform—Dashing automatically routes jobs to idle nodes, prints them, and robotically ejects finished parts around the clock.
+                Upload pre-sliced G-code to our cloud platform—Dasher 1 automatically routes jobs to idle nodes, prints them, and robotically ejects finished parts around the clock.
               </p>
 
               <div className="hero-cta-group">
