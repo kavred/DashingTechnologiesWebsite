@@ -18,10 +18,10 @@ export default function LandingPage({ onOpenLOI }) {
   // Tabbed feature showcase state
   const [activeFeatureTab, setActiveFeatureTab] = useState('cloud-dispatch');
 
-  // CAD Demo state
+  // G-code Demo state
   const [selectedCad, setSelectedCad] = useState({
     id: 1,
-    name: 'housing_v1_mount.step',
+    name: 'housing_v1_mount.gcode',
     size: '14.2 MB',
     estimatedTime: '42 mins',
     filament: 'PETG Carbon',
@@ -29,9 +29,9 @@ export default function LandingPage({ onOpenLOI }) {
   });
   const [isSimulatingDispatch, setIsSimulatingDispatch] = useState(false);
   const [activeJobQueue, setActiveJobQueue] = useState([
-    { id: 'JOB-904', name: 'housing_v1_mount.step', printer: 'Node #01', status: 'In Progress', progress: 84 },
-    { id: 'JOB-905', name: 'impeller_blade.stl', printer: 'Node #02', status: 'Queued', progress: 0 },
-    { id: 'JOB-906', name: 'sensor_bracket_v1.step', printer: 'Node #01', status: 'Queued', progress: 0 },
+    { id: 'JOB-904', name: 'housing_v1_mount.gcode', printer: 'Node #01', status: 'In Progress', progress: 84 },
+    { id: 'JOB-905', name: 'impeller_blade.gcode', printer: 'Node #02', status: 'Queued', progress: 0 },
+    { id: 'JOB-906', name: 'sensor_bracket_v1.gcode', printer: 'Node #01', status: 'Queued', progress: 0 },
   ]);
 
   // Lead form state
@@ -51,9 +51,9 @@ export default function LandingPage({ onOpenLOI }) {
   }, []);
 
   const sampleCadFiles = [
-    { id: 1, name: 'housing_v1_mount.step', size: '14.2 MB', estimatedTime: '42 mins', filament: 'PETG Carbon', status: 'Ready to Dispatch' },
-    { id: 2, name: 'titanium_bracket_r1.stl', size: '8.7 MB', estimatedTime: '1 hr 18 mins', filament: 'PLA Pro', status: 'Ready to Dispatch' },
-    { id: 3, name: 'drone_arm_assembly.step', size: '22.5 MB', estimatedTime: '2 hrs 05 mins', filament: 'ABS Reinforced', status: 'Ready to Dispatch' }
+    { id: 1, name: 'housing_v1_mount.gcode', size: '14.2 MB', estimatedTime: '42 mins', filament: 'PETG Carbon', status: 'Ready to Dispatch' },
+    { id: 2, name: 'titanium_bracket_r1.gcode', size: '8.7 MB', estimatedTime: '1 hr 18 mins', filament: 'PLA Pro', status: 'Ready to Dispatch' },
+    { id: 3, name: 'drone_arm_assembly.gcode', size: '22.5 MB', estimatedTime: '2 hrs 05 mins', filament: 'ABS Reinforced', status: 'Ready to Dispatch' }
   ];
 
   const handleSimulateDispatch = () => {
@@ -64,7 +64,7 @@ export default function LandingPage({ onOpenLOI }) {
         id: `JOB-${Math.floor(910 + Math.random() * 80)}`,
         name: selectedCad.name,
         printer: `Node #0${Math.floor(1 + Math.random() * 3)}`,
-        status: 'Auto-Slicing & Routed',
+        status: 'G-Code Dispatched',
         progress: 5
       };
       setActiveJobQueue([newJob, ...activeJobQueue.slice(0, 3)]);
@@ -244,7 +244,7 @@ export default function LandingPage({ onOpenLOI }) {
                 <div className="bottleneck-item">
                   <div className="b-num">03</div>
                   <div>
-                    <strong>Manual File Routing:</strong> Technicians manually slice files and swap SD cards or send individual print commands.
+                    <strong>Manual File Transfers:</strong> Technicians manually transfer G-code files via SD cards or connect to individual printers one by one.
                   </div>
                 </div>
               </div>
@@ -262,7 +262,7 @@ export default function LandingPage({ onOpenLOI }) {
                 </li>
                 <li>
                   <CheckCircle2 size={18} color="var(--accent)" />
-                  <div><strong>Cloud Auto-Routing:</strong> Upload STEP/STL files once; cloud engine slices and dispatches to idle farm nodes.</div>
+                  <div><strong>Cloud G-Code Dispatch:</strong> Upload pre-sliced G-code files once; cloud engine automatically routes and dispatches to idle farm nodes.</div>
                 </li>
                 <li>
                   <CheckCircle2 size={18} color="var(--accent)" />
@@ -322,16 +322,16 @@ export default function LandingPage({ onOpenLOI }) {
                 {/* Sidebar */}
                 <div className="demo-sidebar">
                   <h4 className="sidebar-title">
-                    <UploadCloud size={18} color="var(--accent)" /> CAD Dispatch Terminal
+                    <UploadCloud size={18} color="var(--accent)" /> G-Code Dispatch Terminal
                   </h4>
 
                   <div className="demo-drop-zone" onClick={handleSimulateDispatch}>
                     <UploadCloud size={30} color="var(--accent)" style={{ margin: '0 auto 0.4rem auto' }} />
                     <div style={{ fontWeight: 700, fontSize: '0.875rem', color: 'var(--text-main)' }}>
-                      Drop CAD File Here
+                      Drop G-Code File Here
                     </div>
                     <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '0.2rem' }}>
-                      Supports .STEP, .STL, .3MF
+                      Supports .gcode, .gcode.3mf, .gco
                     </div>
                   </div>
 
@@ -358,7 +358,7 @@ export default function LandingPage({ onOpenLOI }) {
                     onClick={handleSimulateDispatch}
                     disabled={isSimulatingDispatch}
                   >
-                    {isSimulatingDispatch ? 'Auto-Slicing G-Code...' : 'Dispatch Selected CAD &rarr;'}
+                    {isSimulatingDispatch ? 'Dispatching G-Code Payload...' : 'Dispatch Selected G-Code &rarr;'}
                   </button>
                 </div>
 
@@ -378,7 +378,7 @@ export default function LandingPage({ onOpenLOI }) {
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                       <FileText size={20} color="var(--accent)" />
                       <div>
-                        <div style={{ fontWeight: 700, fontSize: '0.875rem' }}>Payload: {selectedCad.name}</div>
+                        <div style={{ fontWeight: 700, fontSize: '0.875rem' }}>G-Code Payload: {selectedCad.name}</div>
                         <div style={{ fontSize: '0.775rem', color: 'var(--text-muted)' }}>Est. Duration: {selectedCad.estimatedTime} | Filament: {selectedCad.filament}</div>
                       </div>
                     </div>
@@ -390,7 +390,7 @@ export default function LandingPage({ onOpenLOI }) {
                   <div className="queue-table-box">
                     <div className="queue-table-header">
                       <span>Job ID</span>
-                      <span>CAD File</span>
+                      <span>G-Code File</span>
                       <span>Target Printer</span>
                       <span>Status</span>
                     </div>
@@ -466,7 +466,7 @@ export default function LandingPage({ onOpenLOI }) {
               <div className="tier-specs-list">
                 <div className="tier-spec-item"><Check size={16} color="var(--accent)" /> 1–2 Printer Side-Arm Sheet Harvester</div>
                 <div className="tier-spec-item"><Check size={16} color="var(--accent)" /> Compact Open-Frame Desktop Footprint</div>
-                <div className="tier-spec-item"><Check size={16} color="var(--accent)" /> Core Web G-Code Queue & Slicing SaaS</div>
+                <div className="tier-spec-item"><Check size={16} color="var(--accent)" /> Cloud G-Code Dispatch & Queue Manager</div>
                 <div className="tier-spec-item"><Check size={16} color="var(--accent)" /> Klipper / Moonraker API Bridge</div>
               </div>
 

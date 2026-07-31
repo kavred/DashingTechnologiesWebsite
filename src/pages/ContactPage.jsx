@@ -210,7 +210,7 @@ export default function ContactPage({ onOpenLOI }) {
                 </div>
                 <h4 style={{ marginBottom: '0.4rem' }}>Signing a Letter of Intent (LOI)</h4>
                 <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', lineHeight: '1.6' }}>
-                  B2B customers who submit a signed LOI receive early evaluation access, custom CAD integration support, and fixed launch batch pricing.
+                  B2B customers who submit a signed LOI receive early evaluation access, custom G-code fleet integration support, and fixed launch batch pricing.
                 </p>
                 <button className="btn btn-primary btn-sm" style={{ marginTop: '1rem' }} onClick={onOpenLOI}>
                   <span>Open Digital LOI Modal</span>
