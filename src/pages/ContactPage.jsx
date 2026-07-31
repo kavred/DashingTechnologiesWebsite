@@ -36,8 +36,8 @@ export default function ContactPage({ onOpenLOI }) {
 
   const faqs = [
     {
-      q: "What printers are compatible with the Dashing harvesting arm?",
-      a: "Dashing side-rack harvesters support popular Cartesian, CoreXY, and Bed-Slinger printers running Klipper firmware (e.g. Voron, Prusa, Bambu, Creality Ender/K1). Open-source Klipper API bridges allow plug-and-play connection."
+      q: "What printers are compatible with the plate swapping storage rack?",
+      a: "The plate swapping storage racks support popular Cartesian, CoreXY, and Bed-Slinger printers running Klipper firmware (e.g. Voron, Prusa, Bambu, Creality Ender/K1). Open-source Klipper API bridges allow plug-and-play connection."
     },
     {
       q: "Is there a binding legal requirement when submitting an LOI?",

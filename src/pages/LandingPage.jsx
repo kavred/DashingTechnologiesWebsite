@@ -121,7 +121,7 @@ export default function LandingPage({ onOpenLOI }) {
                   <Cpu size={14} color="#38BDF8" /> DASHING-HUB-NODE-01
                 </div>
                 <div className="node-status-badge">
-                  <span className="pulse-green-dot"></span> Automated Eject Active
+                  <span className="pulse-green-dot"></span> Storage Rack Swapper Active
                 </div>
               </div>
 
@@ -133,7 +133,7 @@ export default function LandingPage({ onOpenLOI }) {
                       <div className="telemetry-filename">{selectedCad.name}</div>
                     </div>
                     <div style={{ textAlign: 'right' }}>
-                      <div className="telemetry-subhead">Est. Auto-Eject</div>
+                      <div className="telemetry-subhead">Est. Plate Swap</div>
                       <div className="telemetry-font time-readout">
                         {Math.floor(secondsRemaining / 60)}m {secondsRemaining % 60}s
                       </div>
@@ -169,7 +169,7 @@ export default function LandingPage({ onOpenLOI }) {
                         <div className="progress-bar-fill" style={{ width: `${printProgress}%` }}></div>
                       </div>
                       <div className="arm-status-row">
-                        <RefreshCw size={12} className="pulse" color="#38BDF8" /> Robotic Sheet Ejector Armed & Calibrated
+                        <RefreshCw size={12} className="pulse" color="#38BDF8" /> Plate Storage Swapper Armed & Calibrated
                       </div>
                     </div>
                   </div>
@@ -196,8 +196,8 @@ export default function LandingPage({ onOpenLOI }) {
 
                 <div className="monitor-footer">
                   <span>Next in Queue: <strong>impeller_blade.gcode</strong></span>
-                  <span className="test-eject-btn" onClick={() => alert('Robotic eject mechanism status: Nominal')}>
-                    Test Eject Arm &rarr;
+                  <span className="test-eject-btn" onClick={() => alert('Plate swapper mechanism status: Nominal')}>
+                    Test Plate Swapper &rarr;
                   </span>
                 </div>
               </div>
@@ -247,7 +247,7 @@ export default function LandingPage({ onOpenLOI }) {
               <ul className="solution-bullets">
                 <li>
                   <CheckCircle2 size={18} color="var(--accent)" />
-                  <div><strong>Automated Harvesting:</strong> Spring-steel PEI sheet flexing pops parts directly into collection bins in 14.8s.</div>
+                  <div><strong>Automated Plate Swapping:</strong> Completed prints are swapped into the storage rack and replaced with fresh plates automatically.</div>
                 </li>
                 <li>
                   <CheckCircle2 size={18} color="var(--accent)" />
@@ -293,7 +293,7 @@ export default function LandingPage({ onOpenLOI }) {
                 className={`tab-btn ${activeFeatureTab === 'harvest-seq' ? 'active' : ''}`}
                 onClick={() => setActiveFeatureTab('harvest-seq')}
               >
-                <RefreshCw size={16} /> Automated Ejection Logic
+                <RefreshCw size={16} /> Automated Plate Swapping
               </button>
             </div>
           </div>
@@ -405,18 +405,18 @@ export default function LandingPage({ onOpenLOI }) {
               <div className="harvest-grid">
                 <div className="harvest-step">
                   <div className="harvest-step-num">STAGE 01</div>
-                  <h4>Thermal Cooldown Trigger</h4>
-                  <p>Upon layer completion, bed temperature cools to 35°C, reducing PEI surface adhesion by 85% before mechanical flex.</p>
+                  <h4>Job Completion & Cooldown</h4>
+                  <p>Print finishes and nozzle parks while the heated bed undergoes a rapid cooldown cycle.</p>
                 </div>
                 <div className="harvest-step">
                   <div className="harvest-step-num">STAGE 02</div>
-                  <h4>3.5° Actuator Flex</h4>
-                  <p>Dual stepper actuators flex the spring-steel PEI sheet by 3.5 degrees, shearing part contact points without tools.</p>
+                  <h4>Robotic Plate Swap</h4>
+                  <p>Gantry retrieves the completed plate and securely slots it into the integrated storage rack.</p>
                 </div>
                 <div className="harvest-step">
                   <div className="harvest-step-num">STAGE 03</div>
-                  <h4>Sweep & Reset Queue</h4>
-                  <p>Precision side-arm sweeps harvested parts into the bin. Sheet resets to magnetic home position; node signals "Ready".</p>
+                  <h4>Fresh Plate Loading</h4>
+                  <p>A new PEI sheet is pulled from the storage rack and magnetically seated, ready for the next dispatch.</p>
                 </div>
               </div>
             </div>
@@ -446,7 +446,7 @@ export default function LandingPage({ onOpenLOI }) {
               </div>
 
               <div className="tier-specs-list">
-                <div className="tier-spec-item"><Check size={16} color="var(--accent)" /> 1–2 Printer Side-Arm Sheet Harvester</div>
+                <div className="tier-spec-item"><Check size={16} color="var(--accent)" /> Integrated Multi-Plate Storage Rack</div>
                 <div className="tier-spec-item"><Check size={16} color="var(--accent)" /> Compact Open-Frame Desktop Footprint</div>
                 <div className="tier-spec-item"><Check size={16} color="var(--accent)" /> Core Web G-Code Queue & Dispatch SaaS</div>
                 <div className="tier-spec-item"><Check size={16} color="var(--accent)" /> Klipper / Moonraker API Bridge</div>

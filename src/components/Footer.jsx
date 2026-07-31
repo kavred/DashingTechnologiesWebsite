@@ -14,7 +14,7 @@ export default function Footer({ onOpenLOI }) {
               <span>DASHING TECHNOLOGIES</span>
             </div>
             <p style={{ maxWidth: '340px' }}>
-              Zero-Touch 3D Printing & Modular Robotic Harvesting. Continuous unattended yield from desktop racks to enterprise server arrays.
+              Zero-Touch 3D Printing & Modular Build Plate Storage. Continuous unattended yield from desktop racks to enterprise server arrays.
             </p>
           </div>
 
@@ -22,7 +22,7 @@ export default function Footer({ onOpenLOI }) {
             <div className="footer-col-title">Platform</div>
             <ul className="footer-links">
               <li><Link to="/" className="footer-link">Product Overview</Link></li>
-              <li><Link to="/technology" className="footer-link">Robotic Harvesting</Link></li>
+              <li><Link to="/technology" className="footer-link">Plate Swapping System</Link></li>
               <li><Link to="/technology" className="footer-link">Open Klipper/Moonraker API</Link></li>
               <li><Link to="/use-cases" className="footer-link">Enterprise Farm Arrays</Link></li>
               <li><button onClick={onOpenLOI} className="footer-link" style={{ textAlign: 'left' }}>Letter of Intent (LOI)</button></li>

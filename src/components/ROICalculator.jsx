@@ -31,7 +31,7 @@ export default function ROICalculator({ onOpenLOI }) {
           <Calculator size={16} /> Interactive Fleet Yield & Financial Simulator
         </div>
         <h3>Calculate Your Print Farm's Unattended ROI*</h3>
-        <p>See how much technician labor cost you eliminate and how many extra production hours you unlock with automated harvesting.</p>
+        <p>See how much technician labor cost you eliminate and how many extra production hours you unlock with automated plate swapping.</p>
       </div>
 
       <div className="roi-grid">

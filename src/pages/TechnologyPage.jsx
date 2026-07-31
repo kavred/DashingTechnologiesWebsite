@@ -32,41 +32,41 @@ export default function TechnologyPage({ onOpenLOI }) {
         <div className="container">
           <div className="editorial-split-block">
             <div>
-              <span className="tech-meta-tag">AUTOMATED SHEET EJECTION</span>
-              <h2>Spring-Steel PEI Sheet Flex Mechanism</h2>
+              <span className="tech-meta-tag">AUTOMATED PLATE SWAPPING</span>
+              <h2>Multi-Plate Storage Rack System</h2>
               <p style={{ marginBottom: '1.25rem' }}>
-                The swapper mechanism uses high-temp neodymium magnetic latching and linear actuator flex channels. When a print finishes and the bed cools to 35°C, dual actuators flex the spring-steel PEI sheet by 3.5 degrees, popping parts off cleanly into a collection bin before sliding a fresh sheet into position.
+                The storage rack mechanism uses a dedicated gantry and magnetic latching to swap entire build plates automatically. When a print finishes, the plate is slotted securely into a multi-tiered magazine rack, allowing the printer to pull a fresh sheet and begin the next job immediately while you collect parts on your own time.
               </p>
 
               <div className="spec-highlight-box">
-                <div className="spec-highlight-num">14.8 Seconds</div>
+                <div className="spec-highlight-num">10-Plate Capacity</div>
                 <div className="spec-highlight-text">
-                  Complete harvest and queue reset speed—restoring the printer to active production instantly.
+                  Continuous multi-job queue execution without needing to manually clear beds.
                 </div>
               </div>
             </div>
 
             <div className="harvest-sequence-box">
-              <div className="seq-title">MECHANICAL HARVEST SEQUENCE</div>
+              <div className="seq-title">MECHANICAL SWAP SEQUENCE</div>
               
               <div className="seq-item">
                 <div className="seq-num">01</div>
                 <div>
-                  <strong>Thermal Cooldown:</strong> Bed cools to 35°C, dropping PEI adhesion by 85%.
+                  <strong>Job Completion & Cooldown:</strong> Print finishes and nozzle parks.
                 </div>
               </div>
               
               <div className="seq-item">
                 <div className="seq-num">02</div>
                 <div>
-                  <strong>Linear Actuation Flex:</strong> Actuator applies 3.5° flex angle, shearing part contact point.
+                  <strong>Robotic Plate Transfer:</strong> Gantry retrieves the completed plate and slots it into the storage rack.
                 </div>
               </div>
 
               <div className="seq-item">
                 <div className="seq-num">03</div>
                 <div>
-                  <strong>Side-Arm Sweep & Reset:</strong> Magnetic latch pulls fresh sheet, signalling Klipper core ready.
+                  <strong>Fresh Plate Loading:</strong> A new PEI sheet is pulled from the rack and magnetically seated, ready for dispatch.
                 </div>
               </div>
             </div>
@@ -89,14 +89,6 @@ export default function TechnologyPage({ onOpenLOI }) {
               <h4>Optical AI Spaghetti Detection</h4>
               <p style={{ fontSize: '0.9rem', marginTop: '0.4rem' }}>
                 Onboard 1080p camera runs layer-by-layer neural network inference. Automatically pauses heating and notifies technicians if spaghetti detachment occurs.
-              </p>
-            </div>
-
-            <div className="safety-card">
-              <Zap size={28} color="var(--accent)" style={{ marginBottom: '0.85rem' }} />
-              <h4>Thermal Runaway Safeguards</h4>
-              <p style={{ fontSize: '0.9rem', marginTop: '0.4rem' }}>
-                Hardware thermistor cutoffs cut heater cartridge AC power if temperatures deviate ±3°C from gcode setpoints for more than 4 seconds.
               </p>
             </div>
 
@@ -146,7 +138,7 @@ export default function TechnologyPage({ onOpenLOI }) {
                 </tr>
                 <tr>
                   <td><strong>Ejection Mechanism</strong></td>
-                  <td>Side-Rack PEI Flex Arm</td>
+                  <td>Multi-Plate Storage Rack</td>
                   <td>Multi-Sheet Conveyor / Rack Elevator</td>
                 </tr>
                 <tr>

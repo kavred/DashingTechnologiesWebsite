@@ -36,14 +36,14 @@ export default function HardwareHotspots() {
     },
     {
       id: 'flex-arm',
-      title: 'Spring-Steel PEI Ejection Arm',
-      category: 'Harvest Automation',
+      title: 'Multi-Plate Swapper',
+      category: 'Automated Plate Storage',
       cx: 260,
       cy: 220,
       icon: RefreshCw,
-      summary: 'Actuator flexes magnetic PEI sheet by 3.5 degrees upon bed cooling. Completed parts pop cleanly into collection chute without tools.',
+      summary: 'Robotic gantry seamlessly removes completed plates and stores them in the modular rack, replacing them with fresh PEI sheets for continuous printing.',
       specs: [
-        'Ejection Speed: 14.8 Seconds / Part',
+        'Storage Capacity: 10 PEI Sheets per Rack',
         'PEI Coating: Textured & Smooth Dual-Sided',
         'Bed Magnetic Hold: 120°C High-Temp Neodymium'
       ]
@@ -208,7 +208,7 @@ export default function HardwareHotspots() {
           </div>
 
           <div className="detail-footer-note">
-            Tested & validated under 500+ continuous continuous harvest print cycles.
+            Tested & validated under 500+ continuous continuous plate swap cycles.
           </div>
         </div>
       </div>
