@@ -438,12 +438,12 @@ export default function LandingPage({ onOpenLOI }) {
               <p className="tier-desc">Compact 1-2 printer open-rack module for engineering desks and prototyping teams.</p>
               
               <div className="tier-price-row">
-                <span className="price-val">$1,499</span>
+                <span className="price-val">$1,200</span>
                 <span className="price-unit">/ per node</span>
               </div>
 
               <div className="tier-specs-list">
-                <div className="tier-spec-item"><Check size={16} color="var(--accent)" /> Integrated Multi-Plate Storage Rack</div>
+                <div className="tier-spec-item"><Check size={16} color="var(--accent)" /> Integrated 10-Plate Storage Rack</div>
                 <div className="tier-spec-item"><Check size={16} color="var(--accent)" /> Compact Open-Frame Desktop Footprint</div>
                 <div className="tier-spec-item"><Check size={16} color="var(--accent)" /> Core Web G-Code Queue & Dispatch SaaS</div>
                 <div className="tier-spec-item"><Check size={16} color="var(--accent)" /> Klipper / Moonraker API Bridge</div>
@@ -456,7 +456,7 @@ export default function LandingPage({ onOpenLOI }) {
 
             {/* Enterprise Card */}
             <div className="tier-card featured">
-              <div className="featured-banner">Enterprise Scale Choice</div>
+              <div className="featured-banner">Enterprise Farm Array</div>
               <div className="tier-badge dark">Universities & Manufacturing Labs</div>
               <h3 className="tier-title">Enterprise Farm Array</h3>
               <p className="tier-desc">Standard 19-inch server rack integration for 24/7 continuous micro-manufacturing hubs.</p>

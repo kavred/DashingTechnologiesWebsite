@@ -124,14 +124,19 @@ export default function TechnologyPage({ onOpenLOI }) {
                   <td><span className="telemetry-font">Hardened Steel</span></td>
                 </tr>
                 <tr>
+                  <td><strong>Max Hotend Temp</strong></td>
+                  <td><span className="telemetry-font">300 °C</span></td>
+                  <td><span className="telemetry-font">300 °C</span></td>
+                </tr>
+                <tr>
                   <td><strong>Max Bed Temp</strong></td>
                   <td><span className="telemetry-font">120 °C AC High-Heat Magnetic</span></td>
                   <td><span className="telemetry-font">120 °C AC High-Heat Magnetic</span></td>
                 </tr>
                 <tr>
                   <td><strong>Ejection Mechanism</strong></td>
-                  <td>Multi-Plate Storage Rack System</td>
-                  <td>Multi-Plate Storage Rack System</td>
+                  <td>10-Plate Storage Rack System</td>
+                  <td>10-Plate Storage Rack System</td>
                 </tr>
                 <tr>
                   <td><strong>Firmware API Bridge</strong></td>
