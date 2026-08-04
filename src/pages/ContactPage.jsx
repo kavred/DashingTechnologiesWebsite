@@ -123,7 +123,7 @@ export default function ContactPage({ onOpenLOI }) {
                       >
                         <option value="Pilot Hardware Trial">On-Site Pilot Hardware Trial</option>
                         <option value="Founders Discovery Call">Founders Technical Discovery Call</option>
-                        <option value="Enterprise LOI Reservation">Enterprise Farm LOI Reservation</option>
+                        <option value="Enterprise LOI Reservation">Enterprise Farm Array LOI Reservation</option>
                       </select>
                     </div>
                   </div>
